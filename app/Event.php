@@ -13,6 +13,11 @@ class Event extends Model
         return $this->hasMany('App\Show');
     }
 
+    public function genre()
+    {
+        return $this->belongsTo('App\Genre');
+    }
+
     protected $fillable = [
         'name', 'description'
     ];
