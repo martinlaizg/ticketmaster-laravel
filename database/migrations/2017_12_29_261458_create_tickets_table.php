@@ -15,7 +15,16 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
             $table->float('price');
+            $table->integer('show_id')->unsigned();
+            $table->integer('seat_id')->unsigned();
+            $table->integer('payment_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('tickets', function($table) {
+            $table->foreign('show_id')->references('id')->on('shows');
+            $table->foreign('seat_id')->references('id')->on('seats');
+            $table->foreign('payment_id')->references('id')->on('payment_methods');
         });
     }
 
