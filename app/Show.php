@@ -13,6 +13,11 @@ class Show extends Model
         return $this->hasMany('App\Ticket');
     }
 
+    public function event()
+    {
+        return $this->belongsTo('App\Event');
+    }
+
     protected $fillable = [
         'date'
     ];
