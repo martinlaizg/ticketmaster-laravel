@@ -13,6 +13,11 @@ class Seat extends Model
         return $this->hasMany('App\Ticket');
     }
 
+    public function zone()
+    {
+        return $this->belongsTo('App\Zone');
+    }
+
     protected $fillable = [
         'row', 'column'
     ];

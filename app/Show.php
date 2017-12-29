@@ -18,6 +18,11 @@ class Show extends Model
         return $this->belongsTo('App\Event');
     }
 
+    public function ubication()
+    {
+        return $this->belongsTo('App\Ubication');
+    }
+
     protected $fillable = [
         'date'
     ];

@@ -16,11 +16,13 @@ class CreateShowsTable extends Migration
             $table->increments('id');
             $table->date('date');
             $table->integer('event_id')->unsigned();
+            $table->integer('ubication_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('shows', function($table) {
             $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('ubication_id')->references('id')->on('ubications');
         });
     }
 

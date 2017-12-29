@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeatsTable extends Migration
+class CreateUbicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,10 @@ class CreateSeatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seats', function (Blueprint $table) {
+        Schema::create('ubications', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('row');
-            $table->integer('column');
-            $table->integer('zone_id')->unsigned();
+            $table->string('location');
             $table->timestamps();
-        });
-
-        Schema::table('seats', function($table) {
-            $table->foreign('zone_id')->references('id')->on('zones');
         });
     }
 
@@ -32,6 +26,6 @@ class CreateSeatsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('seats');
+        Schema::drop('ubications');
     }
 }
