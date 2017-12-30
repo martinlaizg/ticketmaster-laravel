@@ -6,13 +6,20 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table = 'users';
+
+    public function tickets()
+    {
+        return $this->belongsToMany('App\Ticket');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'surname', 'password', 'bdate', 'country', 'poblation'
     ];
 
     /**
