@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'events'], function() {
+    Route::get('create','EventController@getCreateForm');
+    Route::post('/','EventController@createForm');
+});
