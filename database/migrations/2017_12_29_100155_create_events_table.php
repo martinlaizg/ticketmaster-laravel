@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->integer('genre_id')->unsigned();
+            $table->integer('genre_id')->unsigned()->nullable();
             $table->timestamps();
         });
 
