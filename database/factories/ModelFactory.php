@@ -20,3 +20,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'role' => "Guest"
     ];
 });
+
+$factory->define(App\Event::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'genre_id' => 1,
+        'description' => $faker->text(100)
+    ];
+});

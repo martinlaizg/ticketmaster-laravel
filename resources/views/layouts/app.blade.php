@@ -23,6 +23,9 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        @yield('style')
+
     </style>
 </head>
 <body id="app-layout">
