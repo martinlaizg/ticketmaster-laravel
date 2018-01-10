@@ -21,6 +21,7 @@ class UsersTableSeeder extends Seeder
             'bdate' => '',
             'country' => 'España',
             'poblation' => 'Alicante',
+            'role' => 'Admin'
         ]);
 
         DB::table('users')->insert([

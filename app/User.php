@@ -30,4 +30,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin() {
+        return (!strcmp($this->role, "Admin"));
+    }
 }
