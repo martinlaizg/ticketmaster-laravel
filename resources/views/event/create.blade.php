@@ -18,13 +18,13 @@
 				<div class='form-group'>
 					<label for='name' class='col-sm-3 control-label'>Nombre:</label>
 					<div class='col-sm-9'>
-						<input type='text' name='name' id='name' class='form-control' value='{{ old("name") }}'>
+						<input type='text' name='name' id='name' class='form-control' value='{!! old("name") !!}'>
 					</div>
 				</div>
 				<div class='form-group'>
 					<label for='description' class='col-sm-3 control-label'>Descripción:</label>
 					<div class='col-sm-9'>
-						<textarea class='form-control' style='resize: vertical;' name='description' id='description' rows='10' value='{{ old("description") }}'></textarea>
+						<textarea class='form-control' style='resize: vertical;' name='description' id='description' rows='10'>{!! old("description") !!}</textarea>
 					</div>
 				</div>
 			</div>
