@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Event;
+use App\Service\EventService;
 
 class EventController extends Controller
 {
@@ -27,10 +28,7 @@ class EventController extends Controller
 			'description' => 'required|max:1000'
 		]);
 
-		$event = new Event();
-		$event->name = $request->name;
-		$event->description = $request->description;
-		$event->save();
+		$event = EventService::createEvent($request->name, $request->description, $request->genre_id);
 		return redirect()->action('EventController@getCreateForm');
 	}
 }
