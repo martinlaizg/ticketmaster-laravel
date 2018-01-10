@@ -22,5 +22,15 @@ class UsersTableSeeder extends Seeder
             'country' => 'España',
             'poblation' => 'Alicante',
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Sergio Conesa Santonja',
+            'email' => 'sergionejo@gmail.com',
+            'password' => bcrypt('sergionejo'),
+            'bdate' => '',
+            'country' => 'España',
+            'poblation' => 'Alicante',
+            'role' => 'Admin'
+        ]);
     }
 }
