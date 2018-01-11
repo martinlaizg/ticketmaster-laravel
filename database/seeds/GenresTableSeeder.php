@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class EventsTableSeeder extends Seeder
+class GenresTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,8 @@ class EventsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Event::class, 20)->create();
+        DB::table('genres')->insert([
+            'name' => 'Rock',
+        ]);
     }
 }

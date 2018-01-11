@@ -12,18 +12,20 @@
 */
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
-	return [
-		'name' => $faker->name,
-		'email' => $faker->safeEmail,
-		'password' => bcrypt(str_random(10)),
-		'remember_token' => str_random(10),
-	];
+    return [
+        'name' => $faker->name,
+        'email' => $faker->safeEmail,
+        'password' => bcrypt(str_random(10)),
+        'remember_token' => str_random(10),
+        'role' => "Guest"
+		//'image' => $faker->image('/storage/app/public/img', 400, 400, null, false),
+    ];
 });
 
 $factory->define(App\Event::class, function (Faker\Generator $faker) {
-	return [
-		'name' => $faker->name,
-		'description' => $faker->text(200),
-		//'image' => $faker->image('/storage/app/public/img', 400, 400, null, false),
-	];
+    return [
+        'name' => $faker->name,
+        'genre_id' => 1,
+        'description' => $faker->text(100)
+    ];
 });

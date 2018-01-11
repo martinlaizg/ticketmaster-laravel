@@ -16,17 +16,20 @@
 	<!-- Styles -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
 	 crossorigin="anonymous">
-	<link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 	<style>
 		body {
 			font-family: 'Lato';
 		}
+    .fa-btn {
+        margin-right: 6px;
+    }
 
-		.fa-btn {
-			margin-right: 6px;
-		}
-	</style>
+    @yield('style')
+
+    </style>
 </head>
 
 <body id="app-layout">
@@ -48,6 +51,7 @@
 				</a>
 			</div>
 
+<<<<<<< HEAD
 			<div class="collapse navbar-collapse" id="app-navbar-collapse">
 				<!-- Left Side Of Navbar -->
 				<ul class="nav navbar-nav">
@@ -55,6 +59,19 @@
 						<a href="{{ url('/home') }}">Home</a>
 					</li>
 				</ul>
+=======
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+                </ul>
+                @if(Auth::user() && Auth::user()->isAdmin()) 
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/admin') }}">Zona administrador</a></li>
+                    </ul>
+                @endif
+                
+>>>>>>> master
 
 				<!-- Right Side Of Navbar -->
 				<ul class="nav navbar-nav navbar-right">
@@ -88,6 +105,7 @@
 
 	@yield('content')
 
+<<<<<<< HEAD
 	<!-- JavaScripts -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb"
 	 crossorigin="anonymous"></script>
@@ -95,6 +113,13 @@
 	 crossorigin="anonymous"></script>
 	{{--
 	<script src="{{ elixir('js/app.js') }}"></script> --}}
+=======
+    <!-- JavaScripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
+>>>>>>> master
 </body>
 
 </html>
