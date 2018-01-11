@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Event;
 
 class HomeController extends Controller
 {
@@ -25,5 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+    public function adminZone() {
+        $events = Event::all();
+
+        return view('adminZone', ['events'=>$events]);
     }
 }
