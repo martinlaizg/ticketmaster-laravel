@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Event;
+use App\Category;
+use App\Genre;
 
 class HomeController extends Controller
 {
@@ -29,7 +31,10 @@ class HomeController extends Controller
     }
     public function adminZone() {
         $events = Event::all();
+        $genres = Genre::all();
+        $categories = Category::all();
 
-        return view('adminZone', ['events'=>$events]);
+        return view('adminZone', ['events'=>$events, 
+            'categories'=>$categories, 'genres'=>$genres]);
     }
 }
