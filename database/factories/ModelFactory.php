@@ -18,6 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
         'role' => "Guest"
+		//'image' => $faker->image('/storage/app/public/img', 400, 400, null, false),
     ];
 });
 

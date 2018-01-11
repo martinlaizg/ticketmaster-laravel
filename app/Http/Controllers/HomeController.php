@@ -6,6 +6,8 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Event;
 
+use App\Service\EventService;
+
 class HomeController extends Controller
 {
     /**
@@ -26,7 +28,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
-    }
+	}
+	
+	public function home()
+	{
+		$events = EventService::proximosEventos();
+		return view('main',[
+			'events' => $events
+		]);
+	}
+	
     public function adminZone() {
         $events = Event::all();
 

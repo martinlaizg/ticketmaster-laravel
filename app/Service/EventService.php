@@ -6,6 +6,11 @@ use App\Event;
 
 class EventService{
 
+	public static function proximosEventos(){
+		$events = Event::get();
+		return $events;
+	}
+	
 	public static function createEvent($name, $description, $genre_id){
 		$event = new Event();
 		$event->name = $name;
