@@ -7,13 +7,10 @@
 			</div>
 			<div class=''>
 				@foreach($events as $event)
-				<div class='row'>
-					<div class="col-sm-3">
-						<img src="img/{{ $event->image }}" class='img-responsive img-rounded' alt="Event image" onerror="this.onerror=null; this.src='./img/default.jpg'">
-					</div>
-					<div class='col-sm-9'>
-						<h4>{!! $event->name !!}</h4>
-						<p>{!! $event->description !!}</p>
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-heading">{!! $event->name !!}</div>
+						<div class="panel-body">{!! $event->description !!}</div>
 					</div>
 				</div>
 				@endforeach

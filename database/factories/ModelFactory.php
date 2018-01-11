@@ -23,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Event::class, function (Faker\Generator $faker) {
 	return [
 		'name' => $faker->name,
-		'description' => str_random(200),
-		'image' => $faker->image('/storage/app/public/img', 400, 400, null, false),
+		'description' => $faker->text(200),
+		//'image' => $faker->image('/storage/app/public/img', 400, 400, null, false),
 	];
 });
