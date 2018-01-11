@@ -23,3 +23,6 @@ Route::group(['prefix' => 'events'], function() {
     Route::get('create','EventController@getCreateForm');
     Route::post('/','EventController@createForm');
 });
+
+Route::get('/admin', 'HomeController@adminZone');
+
