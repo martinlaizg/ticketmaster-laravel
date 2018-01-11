@@ -19,6 +19,10 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', 'HomeController@adminZone');
+Route::group(['prefix' => 'events'], function() {
+    Route::get('create','EventController@getCreateForm');
+    Route::post('/','EventController@createForm');
+});
 
+Route::get('/admin', 'HomeController@adminZone');
 
