@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'Martin Laiz Gómez',
             'email' => 'martinlaizg@gmail.com',
             'password' => bcrypt('martinlaiz'),
-            'bdate' => '',
+            'bdate' => Carbon::createFromDate(1996, 10, 17),
             'country' => 'España',
             'poblation' => 'Alicante',
             'role' => 'Admin'

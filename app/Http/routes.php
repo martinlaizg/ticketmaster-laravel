@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@home');
 
 Route::auth();
 
+Route::get('/profile', 'UserController@getProfile');
+
 Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'events'], function() {

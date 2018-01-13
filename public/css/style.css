@@ -3,3 +3,12 @@
 		border-left: 1px solid #cacaca;
 	}
 }
+
+.link-header {
+	color: aliceblue;
+	
+}
+
+.link-header:hover {
+	color: aqua;
+}
