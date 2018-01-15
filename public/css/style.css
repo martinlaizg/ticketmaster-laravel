@@ -1,6 +1,12 @@
 @media(min-width:768px) {
 	.left-border {
-		border-left: 1px solid #cacaca;
+		border-left: 1px solid #eee;
+	}
+}
+
+@media(min-width:768px) {
+	.right-border {
+		border-right: 1px solid #eee;
 	}
 }
 

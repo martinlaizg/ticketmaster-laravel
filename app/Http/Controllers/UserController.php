@@ -10,11 +10,15 @@ use App\Service\UserService;
 
 class UserController extends Controller
 {
+	public function getUpdateForm() {
+		return view('home');
+	}
+
 	public function getProfile() {
 		$user = Auth::user();
 		return view('user.profile', [
 			'user' => $user,
-			'nextEvents' => UserService::nextEvents($user->id)
+			'nextTickets' => UserService::nextTickets($user->id)
 		]);
 	}
 }
