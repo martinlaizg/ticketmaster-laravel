@@ -32,7 +32,7 @@ class HomeController extends Controller
 	
 	public function home()
 	{
-		$events = EventService::proximosEventos();
+		$events = EventService::nextEvents();
 		return view('main',[
 			'events' => $events
 		]);

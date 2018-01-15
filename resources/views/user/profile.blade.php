@@ -1,10 +1,10 @@
 @extends('layouts.app') @section('content')
 <div class="container">
 	<div class="row">
-		<h1>Bienvenido {{ $user->name }}</h1>
 		<br>
 		<div class="col-sm-4">
 			<!-- Informacion del usuario -->
+			<h2>Bienvenido <br> {{ $user->name }}</h2>
 			<ul class="list-group">
 				<li class="list-group-item text-right">
 					<span class="pull-left">
@@ -38,9 +38,18 @@
 				</li>
 			</ul>
 		</div>
-		<div class="col-sm-8">
+		<div class="col-sm-8 left-border">
 			<!-- Entradas del usuario -->
-
+			<h3>Tus próximas entradas</h3>
+			@if( count($nextEvents) <= 0 )
+				<div class="alert alert-info">
+					No tienes próximas entradas, puedes comprarlas <a href="{{ action('HomeController@home') }}" class="alert-link">aquí</a>
+				</div>
+			@else
+				<div>
+					Aquí aparecen tus entradas
+				</div>
+			@endif
 		</div>
 	</div>
 </div>
