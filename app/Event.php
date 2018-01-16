@@ -21,4 +21,13 @@ class Event extends Model
     protected $fillable = [
         'name', 'description'
     ];
+
+    public function createEvent($name, $description, $genre) {
+    
+        $this->name = $name;
+        $this->description = $description;
+        $this->genre_id = $genre[0];
+
+        $this->save();
+    }
 }

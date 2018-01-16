@@ -21,4 +21,11 @@ class Genre extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function createGenre($name) {
+    
+        $this->name = $name;
+
+        $this->save();
+    }
 }

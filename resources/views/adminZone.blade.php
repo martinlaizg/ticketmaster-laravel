@@ -42,8 +42,10 @@
         </div>
 
         <div id="eventsAdmin" class="tab-pane fade">
-            <h3 class="margenBajo">Eventos</h3>
-
+            <h3 class="margenBajo">Eventos</h3> 
+            
+            <a href="{{action('EventController@createEventView')}}">Crear</a>
+            
             <div class="container">
                 @forelse($events as $event)
 
@@ -62,6 +64,8 @@
         <div id="categoriesAdmin" class="tab-pane fade">
             <h3 class="margenBajo">Categorias</h3>
 
+            <a href="{{action('CategoryController@createCategoryView')}}">Crear</a>
+
             <div class="container">
                 @forelse($categories as $category)
 
@@ -77,6 +81,8 @@
 
         <div id="genresAdmin" class="tab-pane fade">
             <h3 class="margenBajo">Géneros</h3>
+
+            <a href="{{action('GenreController@createGenreView')}}">Crear</a>
             
             <div class="container">
                 @forelse($genres as $genre)

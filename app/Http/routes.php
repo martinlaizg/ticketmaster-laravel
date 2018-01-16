@@ -21,4 +21,19 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/admin', 'HomeController@adminZone');
 
+Route::group(['prefix' => 'event'], function() {
+    Route::post('create', 'EventController@createEvent');
+    Route::get('create', 'EventController@createEventView');
+});
+
+Route::group(['prefix' => 'category'], function() {
+    Route::post('create', 'CategoryController@createCategory');
+    Route::get('create', 'CategoryController@createCategoryView');
+});
+
+Route::group(['prefix' => 'genre'], function() {
+    Route::post('create', 'GenreController@createGenre');
+    Route::get('create', 'GenreController@createGenreView');
+});
+
 
