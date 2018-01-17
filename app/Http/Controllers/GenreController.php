@@ -29,4 +29,16 @@ class GenreController extends Controller
 
         return redirect()->action('HomeController@adminZone');
     }
+
+    public function editGenreView($id) {
+        $e = Genre::findOrFail($id);
+
+        return view('edit_genre', ['genre' => $e]);
+    }
+
+    public function editGenre(Request $request, $id) {
+        Genre::editGenre($request->name, $id);
+
+        return redirect()->action('HomeController@adminZone');
+    }
 }

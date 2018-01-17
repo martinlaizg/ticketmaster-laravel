@@ -30,4 +30,17 @@ class CategoryController extends Controller
 
         return redirect()->action('HomeController@adminZone');
     }
+
+    public function editCategoryView($id) {
+        $genres = Genre::all()->lists('name');
+        $e = Category::findOrFail($id);
+
+        return view('edit_category', ['category' => $e, 'genres' => $genres]);
+    }
+
+    public function editCategory(Request $request, $id) {
+        Category::editCategory($request->name, $request->genre, $id);
+
+        return redirect()->action('HomeController@adminZone');
+    }
 }

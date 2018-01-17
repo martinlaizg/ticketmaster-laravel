@@ -30,4 +30,16 @@ class Category extends Model
         $e = Category::find($id);
         $e->delete();
     }
+
+    public static function editCategory($name, $genre, $id) {
+
+        $e = Category::find($id);
+
+        if($name != null)
+            $e->name = $name;
+            
+        $e->genre_id = $genre[0] + 1;
+
+        $e->save();
+    }
 }

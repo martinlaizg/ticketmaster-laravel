@@ -51,5 +51,18 @@ class EventController extends Controller
 
 		$event = EventService::createEvent($request->name, $request->description, $request->genre_id);
 		return redirect()->action('EventController@getCreateForm');
-	}
+    }
+    
+    public function editEventView($id) {
+        $genres = Genre::all()->lists('name');
+        $e = Event::findOrFail($id);
+
+        return view('edit_event', ['event' => $e, 'genres' => $genres]);
+    }
+
+    public function editEvent(Request $request, $id) {
+        Event::editEvent($request->name, $request->description, $request->genre, $id);
+
+        return redirect()->action('HomeController@adminZone');
+    }
 }

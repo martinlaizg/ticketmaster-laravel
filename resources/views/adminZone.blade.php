@@ -50,7 +50,13 @@
                 @forelse($events as $event)
 
                     <div class="panel panel-primary half">
-                        <div class="panel-heading">{{$event->name}}<a href="{{action('EventController@deleteEvent', [$event->id])}}">
+                        <div class="panel-heading">{{$event->name}}
+
+                        <a href="{{action('EventController@editEventView', [$event->id])}}">
+                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
+                        </a>
+
+                        <a href="{{action('EventController@deleteEvent', [$event->id])}}">
                             <span class="glyphicon glyphicon-remove" style="color:red"></span>
                         </a></div>
 
@@ -73,7 +79,13 @@
                 @forelse($categories as $category)
 
                     <div class="panel panel-primary half-sm">
-                        <div class="panel-heading">{{$category->name}}<a href="{{action('CategoryController@deleteCategory', [$category->id])}}">
+                        <div class="panel-heading">{{$category->name}}
+
+                        <a href="{{action('CategoryController@editCategoryView', [$category->id])}}">
+                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
+                        </a>
+
+                        <a href="{{action('CategoryController@deleteCategory', [$category->id])}}">
                             <span class="glyphicon glyphicon-remove" style="color:red"></span>
                         </a></div>
                     </div>
@@ -94,6 +106,11 @@
 
                     <div class="panel panel-primary half-sm">
                         <div class="panel-heading">{{$genre->name}} 
+
+                        <a href="{{action('GenreController@editGenreView', [$genre->id])}}">
+                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
+                        </a>
+
                         <a href="{{action('GenreController@deleteGenre', [$genre->id])}}">
                             <span class="glyphicon glyphicon-remove" style="color:red"></span>
                         </a></div>

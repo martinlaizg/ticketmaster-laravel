@@ -35,4 +35,19 @@ class Event extends Model
         $e = Event::find($id);
         $e->delete();
     }
+
+    public static function editEvent($name, $description, $genre, $id) {
+
+        $e = Event::find($id);
+
+        if($name != null)
+            $e->name = $name;
+
+        if($description != null)
+            $e->description = $description;
+
+        $e->genre_id = $genre[0] + 1;
+
+        $e->save();
+    }
 }

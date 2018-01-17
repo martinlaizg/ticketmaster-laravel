@@ -33,4 +33,14 @@ class Genre extends Model
         $e = Genre::find($id);
         $e->delete();
     }
+
+    public static function editGenre($name, $id) {
+
+        $e = Genre::find($id);
+
+        if($name != null)
+            $e->name = $name;
+
+        $e->save();
+    }
 }
