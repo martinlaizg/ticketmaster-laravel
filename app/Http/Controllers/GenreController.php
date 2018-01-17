@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Genre;
+use App\Service\GenreService;
 
 class GenreController extends Controller
 {
@@ -22,6 +23,8 @@ class GenreController extends Controller
     }
 
     public function deleteGenre($id) {
+
+        GenreService::deleteChilds($id);
         Genre::borrarGenero($id);
 
         return redirect()->action('HomeController@adminZone');

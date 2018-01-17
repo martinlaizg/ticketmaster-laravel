@@ -21,7 +21,7 @@ class Category extends Model
     
         $this->name = $name;
 
-        $this->genre_id = $genre[0];
+        $this->genre_id = $genre[0] + 1;
 
         $this->save();
     }
