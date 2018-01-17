@@ -15,7 +15,11 @@ Route::get('/', 'HomeController@home');
 
 Route::auth();
 
+Route::get('/profile', 'UserController@getProfile');
+
 Route::get('/home', 'HomeController@index');
+
+Route::get('/user/update', 'UserController@getUpdateForm');
 
 Route::group(['prefix' => 'events'], function() {
     Route::get('create','EventController@getCreateForm');

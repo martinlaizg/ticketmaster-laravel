@@ -6,7 +6,7 @@ use App\Event;
 
 class EventService{
 
-	public static function proximosEventos(){
+	public static function nextEvents(){
 		$events = Event::get();
 		return $events;
 	}
