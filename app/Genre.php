@@ -21,4 +21,26 @@ class Genre extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function createGenre($name) {
+    
+        $this->name = $name;
+
+        $this->save();
+    }
+
+    public static function borrarGenero($id) {
+        $e = Genre::find($id);
+        $e->delete();
+    }
+
+    public static function editGenre($name, $id) {
+
+        $e = Genre::find($id);
+
+        if($name != null)
+            $e->name = $name;
+
+        $e->save();
+    }
 }

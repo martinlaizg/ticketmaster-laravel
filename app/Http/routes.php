@@ -22,5 +22,29 @@ Route::group(['prefix' => 'events'], function() {
     Route::post('/','EventController@createForm');
 });
 
+Route::group(['prefix' => 'event'], function() {
+    Route::post('create', 'EventController@createEvent');
+    Route::get('create', 'EventController@createEventView');
+    Route::get('delete/{id}', 'EventController@deleteEvent');
+    Route::post('edit/{id}', 'EventController@editEvent');
+    Route::get('edit/{id}', 'EventController@editEventView');
+});
+
+Route::group(['prefix' => 'category'], function() {
+    Route::post('create', 'CategoryController@createCategory');
+    Route::get('create', 'CategoryController@createCategoryView');
+    Route::get('delete/{id}', 'CategoryController@deleteCategory');
+    Route::post('edit/{id}', 'CategoryController@editCategory');
+    Route::get('edit/{id}', 'CategoryController@editCategoryView');
+});
+
+Route::group(['prefix' => 'genre'], function() {
+    Route::post('create', 'GenreController@createGenre');
+    Route::get('create', 'GenreController@createGenreView');
+    Route::get('delete/{id}', 'GenreController@deleteGenre');
+    Route::post('edit/{id}', 'GenreController@editGenre');
+    Route::get('edit/{id}', 'GenreController@editGenreView');
+});
+
 Route::get('/admin', 'HomeController@adminZone');
 

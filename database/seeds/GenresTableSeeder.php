@@ -14,5 +14,17 @@ class GenresTableSeeder extends Seeder
         DB::table('genres')->insert([
             'name' => 'Rock',
         ]);
+
+        DB::table('genres')->insert([
+            'name' => 'Pop',
+        ]);
+
+        DB::table('genres')->insert([
+            'name' => 'Reggaeton',
+        ]);
+
+        DB::table('genres')->insert([
+            'name' => 'Salsa',
+        ]);
     }
 }
