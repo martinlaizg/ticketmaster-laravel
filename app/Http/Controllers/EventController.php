@@ -24,4 +24,10 @@ class EventController extends Controller
 
         return redirect()->action('HomeController@adminZone');
     }
+
+    public function deleteEvent($id) {
+        Event::borrarEvento($id);
+
+        return redirect()->action('HomeController@adminZone');
+    }
 }

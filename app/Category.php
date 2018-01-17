@@ -25,4 +25,9 @@ class Category extends Model
 
         $this->save();
     }
+
+    public static function borrarCategoria($id) {
+        $e = Category::find($id);
+        $e->delete();
+    }
 }

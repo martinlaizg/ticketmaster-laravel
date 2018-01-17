@@ -50,7 +50,10 @@
                 @forelse($events as $event)
 
                     <div class="panel panel-primary half">
-                        <div class="panel-heading">{{$event->name}}</div>
+                        <div class="panel-heading">{{$event->name}}<a href="{{action('EventController@deleteEvent', [$event->id])}}">
+                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                        </a></div>
+
                         <div class="panel-body">{{$event->description}}</div>
                     </div>
 
@@ -70,7 +73,9 @@
                 @forelse($categories as $category)
 
                     <div class="panel panel-primary half-sm">
-                        <div class="panel-heading">{{$category->name}}</div>
+                        <div class="panel-heading">{{$category->name}}<a href="{{action('CategoryController@deleteCategory', [$category->id])}}">
+                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                        </a></div>
                     </div>
 
                 @empty
@@ -88,7 +93,10 @@
                 @forelse($genres as $genre)
 
                     <div class="panel panel-primary half-sm">
-                        <div class="panel-heading">{{$genre->name}}</div>
+                        <div class="panel-heading">{{$genre->name}} 
+                        <a href="{{action('GenreController@deleteGenre', [$genre->id])}}">
+                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                        </a></div>
                     </div>
 
                 @empty

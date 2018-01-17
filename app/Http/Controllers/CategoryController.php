@@ -24,4 +24,10 @@ class CategoryController extends Controller
 
         return redirect()->action('HomeController@adminZone');
     }
+
+    public function deleteCategory($id) {
+        Category::borrarCategoria($id);
+
+        return redirect()->action('HomeController@adminZone');
+    }
 }

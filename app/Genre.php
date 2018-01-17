@@ -28,4 +28,9 @@ class Genre extends Model
 
         $this->save();
     }
+
+    public static function borrarGenero($id) {
+        $e = Genre::find($id);
+        $e->delete();
+    }
 }

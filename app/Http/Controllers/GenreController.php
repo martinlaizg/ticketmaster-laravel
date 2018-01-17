@@ -20,4 +20,10 @@ class GenreController extends Controller
 
         return redirect()->action('HomeController@adminZone');
     }
+
+    public function deleteGenre($id) {
+        Genre::borrarGenero($id);
+
+        return redirect()->action('HomeController@adminZone');
+    }
 }

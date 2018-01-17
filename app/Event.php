@@ -30,4 +30,9 @@ class Event extends Model
 
         $this->save();
     }
+
+    public static function borrarEvento($id) {
+        $e = Event::find($id);
+        $e->delete();
+    }
 }

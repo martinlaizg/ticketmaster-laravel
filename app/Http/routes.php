@@ -24,16 +24,19 @@ Route::get('/admin', 'HomeController@adminZone');
 Route::group(['prefix' => 'event'], function() {
     Route::post('create', 'EventController@createEvent');
     Route::get('create', 'EventController@createEventView');
+    Route::get('delete/{id}', 'EventController@deleteEvent');
 });
 
 Route::group(['prefix' => 'category'], function() {
     Route::post('create', 'CategoryController@createCategory');
     Route::get('create', 'CategoryController@createCategoryView');
+    Route::get('delete/{id}', 'CategoryController@deleteCategory');
 });
 
 Route::group(['prefix' => 'genre'], function() {
     Route::post('create', 'GenreController@createGenre');
     Route::get('create', 'GenreController@createGenreView');
+    Route::get('delete/{id}', 'GenreController@deleteGenre');
 });
 
 
