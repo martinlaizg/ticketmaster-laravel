@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@home');
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/admin', 'HomeController@adminZone');
+Route::group(['prefix' => 'events'], function() {
+    Route::get('create','EventController@getCreateForm');
+    Route::post('/','EventController@createForm');
+});
 
 Route::group(['prefix' => 'event'], function() {
     Route::post('create', 'EventController@createEvent');
@@ -39,4 +40,5 @@ Route::group(['prefix' => 'genre'], function() {
     Route::get('delete/{id}', 'GenreController@deleteGenre');
 });
 
+Route::get('/admin', 'HomeController@adminZone');
 

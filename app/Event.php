@@ -19,7 +19,7 @@ class Event extends Model
     }
 
     protected $fillable = [
-        'name', 'description'
+        'name', 'description', 'image'
     ];
 
     public function createEvent($name, $description, $genre) {

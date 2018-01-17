@@ -8,6 +8,8 @@ use App\Event;
 use App\Category;
 use App\Genre;
 
+use App\Service\EventService;
+
 class HomeController extends Controller
 {
     /**
@@ -28,7 +30,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
-    }
+	}
+	
+	public function home()
+	{
+		$events = EventService::proximosEventos();
+		return view('main',[
+			'events' => $events
+		]);
+	}
+	
     public function adminZone() {
         $events = Event::all();
         $genres = Genre::all();
