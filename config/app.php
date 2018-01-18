@@ -208,4 +208,9 @@ return [
 
     ],
 
+	/**
+	 * Configure locale faker
+	 */
+	'faker_locale' => 'es_ES',
+
 ];

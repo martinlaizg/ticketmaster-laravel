@@ -9,7 +9,7 @@
 		<span class="pull-left">
 			<strong>Apellidos</strong>
 		</span>
-		To-Do{{ $user->surname }}
+		{{ $user->surname }}
 	</li>
 	<li class="list-group-item text-right">
 		<span class="pull-left">
