@@ -69,7 +69,8 @@ class EventController extends Controller
 	public function getEvents(Request $request) {
 		return view('event.eventList',[
 			'events' => Event::all(),
-			'genres' => Genre::get()
+			'genres' => Genre::get(),
+			'ubications' => []
 		]);
 	}
 }
