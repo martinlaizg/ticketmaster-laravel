@@ -55,7 +55,7 @@
 				<!-- Left Side Of Navbar -->
 				<ul class="nav navbar-nav">
 					<li>
-						<a href="{{ url('/home') }}">Home</a>
+						<a href="{{ action('EventController@getEvents') }}">Eventos</a>
 					</li>
 				</ul>
 				@if(Auth::user() && Auth::user()->isAdmin())

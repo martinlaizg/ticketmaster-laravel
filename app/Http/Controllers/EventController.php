@@ -64,5 +64,11 @@ class EventController extends Controller
         Event::editEvent($request->name, $request->description, $request->genre, $id);
 
         return redirect()->action('HomeController@adminZone');
-    }
+	}
+	
+	public function getEvents(Request $request) {
+		return view('event.eventList',[
+			'events' => Event::all()
+		]);
+	}
 }

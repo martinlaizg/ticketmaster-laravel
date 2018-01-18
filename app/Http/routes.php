@@ -27,6 +27,7 @@ Route::group(['prefix' => 'events'], function() {
 });
 
 Route::group(['prefix' => 'event'], function() {
+	Route::get('/', 'EventController@getEvents');
     Route::post('create', 'EventController@createEvent');
     Route::get('create', 'EventController@createEventView');
     Route::get('delete/{id}', 'EventController@deleteEvent');
