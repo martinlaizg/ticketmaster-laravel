@@ -16,7 +16,8 @@ class UsersTableSeeder extends Seeder
         factory(App\User::class, 50)->create();
 
         DB::table('users')->insert([
-            'name' => 'Martin Laiz Gómez',
+			'name' => 'Martin',
+			'surname' => 'Laiz Gómez',
             'email' => 'martinlaizg@gmail.com',
             'password' => bcrypt('martinlaiz'),
             'bdate' => Carbon::createFromDate(1996, 10, 17),
@@ -26,7 +27,8 @@ class UsersTableSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'name' => 'Sergio Conesa Santonja',
+			'name' => 'Sergio',
+			'surname' => 'Conesa Santonja',
             'email' => 'sergionejo@gmail.com',
             'password' => bcrypt('sergionejo'),
             'bdate' => '',
