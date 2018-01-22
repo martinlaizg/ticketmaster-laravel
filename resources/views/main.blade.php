@@ -7,12 +7,7 @@
 			</div>
 			<div class=''>
 				@foreach($events as $event)
-				<div class="row">
-					<div class="panel panel-primary">
-						<div class="panel-heading"><a class="link-header" href="/events/{{ $event->id }}">{!! $event->name !!}</a></div>
-						<div class="panel-body">{!! $event->description !!}</div>
-					</div>
-				</div>
+					@include('event.smallEvent', [ 'event' => $event ])
 				@endforeach
 			</div>
 		</div>

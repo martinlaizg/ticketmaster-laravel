@@ -55,7 +55,7 @@
 			@if( count($events) > 0 )
 				{{ $events->appends(['genre_id' => $genre])->links() }}
 				@foreach( $events as $event)
-					@include('event.event', [ 'event' => $event ]) 
+					@include('event.smallEvent', [ 'event' => $event ]) 
 				@endforeach
 				{{ $events->appends(['genre_id' => $genre])->links() }}
 			@else
