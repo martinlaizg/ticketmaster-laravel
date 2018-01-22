@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\Category;
 use App\Genre;
+use App\Ubication;
+use App\Show;
 
 use App\Service\EventService;
 
@@ -44,8 +46,11 @@ class HomeController extends Controller
         $events = Event::all();
         $genres = Genre::all();
         $categories = Category::all();
+        $ubications = Ubication::all();
+        $shows = Show::all();
 
         return view('adminZone', ['events'=>$events, 
-            'categories'=>$categories, 'genres'=>$genres]);
+            'categories'=>$categories, 'genres'=>$genres, 
+            'ubications'=>$ubications, 'shows'=>$shows]);
     }
 }

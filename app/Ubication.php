@@ -21,4 +21,24 @@ class Ubication extends Model
     protected $fillable = [
         'ubication'
     ];
+
+    public function createUbication($ubication) {
+        $this->location = $ubication;
+
+        $this->save();
+    }
+
+    public static function borrarUbicacion($id) {
+        $e = Ubication::find($id);
+        $e->delete();
+    }
+
+    public static function editUbication($ubication, $id) {
+        $e = Ubication::find($id);
+
+        if($ubication != null) 
+            $e->location = $ubication;
+
+        $e->save();
+    }
 }

@@ -5,6 +5,8 @@ namespace App\Service;
 use Carbon\Carbon;
 
 use App\Event;
+use App\Show;
+use DB;
 
 class EventService{
 
@@ -30,5 +32,13 @@ class EventService{
 			$events = $events->where('genre_id', $genre);
 		}
 		return $events;
+	}
+
+	public static function deleteChilds($eventId){
+        $shows = DB::table('shows')->where('event_id', $eventId)->get();
+        
+        foreach ($shows as &$show) {
+            Show::borrarShow($show->id);
+        }
 	}
 }

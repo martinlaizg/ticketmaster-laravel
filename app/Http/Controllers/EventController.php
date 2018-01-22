@@ -28,6 +28,7 @@ class EventController extends Controller
     }
 
     public function deleteEvent($id) {
+        EventService::deleteChilds($id);
         Event::borrarEvento($id);
 
         return redirect()->action('HomeController@adminZone');
