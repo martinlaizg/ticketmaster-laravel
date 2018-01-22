@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Ubication;
+use App\Service\UbicationService;
 
 class UbicationController extends Controller
 {
@@ -22,6 +23,8 @@ class UbicationController extends Controller
     }
 
     public function deleteUbication($id) {
+
+        UbicationService::deleteChilds($id);
 
         Ubication::borrarUbicacion($id);
 
