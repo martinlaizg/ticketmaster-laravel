@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Event;
 use App\Service\EventService;
 use App\Genre;
+use App\Category;
 
 class EventController extends Controller
 {
@@ -40,9 +41,6 @@ class EventController extends Controller
 		return view('event.create');
 	}
 
-	/**
-	 * Crear evento
-	 */
     public function createForm(Request $request) {
 		$this->validate($request, [
 			'name' => 'required|max:50|unique:events',
@@ -67,10 +65,22 @@ class EventController extends Controller
 	}
 	
 	public function getEvents(Request $request) {
+		//dd($request);
+		$events = EventService::getEventsFilter($request->genre_id, $request->date, $request->ubication);
+		/*
 		return view('event.eventList',[
-			'events' => Event::all(),
-			'genres' => Genre::get(),
+			'events' => $events,
+			'categories' => Category::get(),
 			'ubications' => []
+		]);
+		 */
+		return view('event.eventList',[
+			'events' => $events->paginate(5),
+			'categories' => Genre::get(),
+			'ubications' => [],
+			'genre' => $request->genre_id,
+			'date' => $request->date,
+			'ubication' => $request->ubication,
 		]);
 	}
 }

@@ -21,13 +21,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/user/update', 'UserController@getUpdateForm');
 
-Route::group(['prefix' => 'events'], function() {
-    Route::get('create','EventController@getCreateForm');
-    Route::post('/','EventController@createForm');
-});
-
 Route::group(['prefix' => 'event'], function() {
-	Route::get('/', 'EventController@getEvents');
+	Route::any('/', 'EventController@getEvents');
     Route::post('create', 'EventController@createEvent');
     Route::get('create', 'EventController@createEventView');
     Route::get('delete/{id}', 'EventController@deleteEvent');
