@@ -7,39 +7,37 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Category;
-use App\Genre;
+use App\Service\CategoryService;
 
 class CategoryController extends Controller
 {
     public function createCategoryView() {
 
-        $genres = Genre::all()->lists('name');
-
-        return view('create_category', ['genres' => $genres]);
+        return view('create_category');
     }
 
     public function createCategory(Request $request) {
         $category = new Category();
-        $category->createCategory($request->name, $request->genre);
+        $category->createCategory($request->name);
 
         return redirect()->action('HomeController@adminZone');
     }
 
     public function deleteCategory($id) {
+        CategoryService::deleteChilds($id);
         Category::borrarCategoria($id);
 
         return redirect()->action('HomeController@adminZone');
     }
 
     public function editCategoryView($id) {
-        $genres = Genre::all()->lists('name');
         $e = Category::findOrFail($id);
 
-        return view('edit_category', ['category' => $e, 'genres' => $genres]);
+        return view('edit_category', ['category' => $e]);
     }
 
     public function editCategory(Request $request, $id) {
-        Category::editCategory($request->name, $request->genre, $id);
+        Category::editCategory($request->name, $id);
 
         return redirect()->action('HomeController@adminZone');
     }

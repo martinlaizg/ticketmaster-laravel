@@ -8,16 +8,19 @@ use App\Http\Requests;
 
 use App\Genre;
 use App\Service\GenreService;
+use App\Category;
 
 class GenreController extends Controller
 {
     public function createGenreView() {
-        return view('create_genre');
+        $categories = Category::all()->lists('name');
+
+        return view('create_genre', ['categories' => $categories]);
     }
 
     public function createGenre(Request $request) {
         $genre = new Genre();
-        $genre->createGenre($request->name);
+        $genre->createGenre($request->name, $request->category);
 
         return redirect()->action('HomeController@adminZone');
     }
@@ -32,12 +35,13 @@ class GenreController extends Controller
 
     public function editGenreView($id) {
         $e = Genre::findOrFail($id);
+        $categories = Category::all()->lists('name');
 
-        return view('edit_genre', ['genre' => $e]);
+        return view('edit_genre', ['genre' => $e, 'categories' => $categories]);
     }
 
     public function editGenre(Request $request, $id) {
-        Genre::editGenre($request->name, $id);
+        Genre::editGenre($request->name, $request->category, $id);
 
         return redirect()->action('HomeController@adminZone');
     }

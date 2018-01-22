@@ -17,11 +17,9 @@ class Category extends Model
         'name'
     ];
 
-    public function createCategory($name, $genre) {
+    public function createCategory($name) {
     
         $this->name = $name;
-
-        $this->genre_id = $genre[0] + 1;
 
         $this->save();
     }
@@ -31,14 +29,12 @@ class Category extends Model
         $e->delete();
     }
 
-    public static function editCategory($name, $genre, $id) {
+    public static function editCategory($name, $id) {
 
         $e = Category::find($id);
 
         if($name != null)
             $e->name = $name;
-            
-        $e->genre_id = $genre[0] + 1;
 
         $e->save();
     }
