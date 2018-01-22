@@ -22,9 +22,11 @@ class Genre extends Model
         'name'
     ];
 
-    public function createGenre($name) {
+    public function createGenre($name, $category) {
     
         $this->name = $name;
+
+        $this->category_id = $category[0] + 1;
 
         $this->save();
     }
@@ -34,12 +36,14 @@ class Genre extends Model
         $e->delete();
     }
 
-    public static function editGenre($name, $id) {
+    public static function editGenre($name, $category, $id) {
 
         $e = Genre::find($id);
 
         if($name != null)
             $e->name = $name;
+
+        $e->category_id = $category[0] + 1;
 
         $e->save();
     }

@@ -13,6 +13,9 @@
         {!! Form::text('name', null, ['class' => 'field', 'placeholder' => 'Nombre',
                         'autofocus' => 'autofocus', 'required' => 'required']) !!}
                         
+        <h4> <span class="label label-primary">Categoria</span></h4></div>    
+        {!! Form::select('category[]', ($categories), null, 
+            ['multiple'=>false,'class' => 'form-control margin']) !!}
 
         {!! Form::button('<span class="glyphicon glyphicon-floppy-saved"></span> Crear Género',
              ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
