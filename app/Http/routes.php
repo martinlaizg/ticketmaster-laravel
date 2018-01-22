@@ -46,5 +46,13 @@ Route::group(['prefix' => 'genre'], function() {
     Route::get('edit/{id}', 'GenreController@editGenreView');
 });
 
+Route::group(['prefix' => 'ubication'], function() {
+    Route::post('create', 'UbicationController@createUbication');
+    Route::get('create', 'UbicationController@createUbicationView');
+    Route::get('delete/{id}', 'UbicationController@deleteUbication');
+    Route::post('edit/{id}', 'UbicationController@editUbication');
+    Route::get('edit/{id}', 'UbicationController@editUbicationView');
+});
+
 Route::get('/admin', 'HomeController@adminZone');
 

@@ -33,6 +33,7 @@
         <li><a data-toggle="tab" href="#eventsAdmin">Eventos</a></li>  
         <li><a data-toggle="tab" href="#genresAdmin">Géneros</a></li>
         <li><a data-toggle="tab" href="#categoriesAdmin">Categorias</a></li>
+        <li><a data-toggle="tab" href="#ubicationsAdmin">Ubicaciones</a></li>
     </ul>
   
     <div class="tab-content">
@@ -118,6 +119,32 @@
 
                 @empty
                     <div class="list-empty">No hay ningún género</div>
+                @endforelse
+            </div>
+        </div>
+
+        <div id="ubicationsAdmin" class="tab-pane fade">
+            <h3 class="margenBajo">Ubicaciones</h3>
+
+            <a href="{{action('UbicationController@createUbicationView')}}">Crear</a>
+            
+            <div class="container">
+                @forelse($ubications as $ubication)
+
+                    <div class="panel panel-primary half-sm">
+                        <div class="panel-heading">{{$ubication->location}} 
+
+                        <a href="{{action('UbicationController@editUbicationView', [$ubication->id])}}">
+                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
+                        </a>
+
+                        <a href="{{action('UbicationController@deleteUbication', [$ubication->id])}}">
+                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                        </a></div>
+                    </div>
+
+                @empty
+                    <div class="list-empty">No hay ninguna ubicación</div>
                 @endforelse
             </div>
         </div>
