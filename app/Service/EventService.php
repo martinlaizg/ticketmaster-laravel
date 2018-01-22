@@ -2,11 +2,14 @@
 
 namespace App\Service;
 
+use Carbon\Carbon;
+
 use App\Event;
 
 class EventService{
 
 	public static function nextEvents(){
+		//$events = Event::where('date', '>', Carbon::now())->get();
 		$events = Event::get();
 		return $events;
 	}
@@ -20,4 +23,12 @@ class EventService{
 		return $event;
 	}
 
+	public static function getEventsFilter($genre, $date, $ubication){
+		$events = Event::with('shows');
+		//dd($events);
+		if($genre) {
+			$events = $events->where('genre_id', $genre);
+		}
+		return $events;
+	}
 }
