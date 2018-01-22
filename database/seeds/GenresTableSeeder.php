@@ -13,18 +13,22 @@ class GenresTableSeeder extends Seeder
     {
         DB::table('genres')->insert([
             'name' => 'Rock',
+            'category_id' => 1
         ]);
 
         DB::table('genres')->insert([
             'name' => 'Pop',
+            'category_id' => 1
         ]);
 
         DB::table('genres')->insert([
             'name' => 'Reggaeton',
+            'category_id' => 1
         ]);
 
         DB::table('genres')->insert([
             'name' => 'Salsa',
+            'category_id' => 1
         ]);
     }
 }

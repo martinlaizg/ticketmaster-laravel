@@ -12,23 +12,19 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'name' => 'Balada',
-            'genre_id' => 1
+            'name' => 'Musica',
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Heavy',
-            'genre_id' => 1
+            'name' => 'Teatro',
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Electro-latino',
-            'genre_id' => 3
+            'name' => 'Quedada',
         ]);
 
         DB::table('categories')->insert([
             'name' => 'Dembow',
-            'genre_id' => 3
         ]);
     }
 }
