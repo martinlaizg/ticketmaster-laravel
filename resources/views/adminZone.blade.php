@@ -31,6 +31,7 @@
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#homeAdmin">Bienvenido</a></li>
         <li><a data-toggle="tab" href="#eventsAdmin">Eventos</a></li>  
+        <li><a data-toggle="tab" href="#showsAdmin">Shows</a></li>
         <li><a data-toggle="tab" href="#genresAdmin">Géneros</a></li>
         <li><a data-toggle="tab" href="#categoriesAdmin">Categorias</a></li>
         <li><a data-toggle="tab" href="#ubicationsAdmin">Ubicaciones</a></li>
@@ -145,6 +146,32 @@
 
                 @empty
                     <div class="list-empty">No hay ninguna ubicación</div>
+                @endforelse
+            </div>
+        </div>
+
+        <div id="showsAdmin" class="tab-pane fade">
+            <h3 class="margenBajo">Shows</h3>
+
+            <a href="{{action('ShowController@createShowView')}}">Crear</a>
+            
+            <div class="container">
+                @forelse($shows as $show)
+
+                    <div class="panel panel-primary half-sm">
+                        <div class="panel-heading">{{$show->date}} 
+
+                        <a href="{{action('ShowController@editShowView', [$show->id])}}">
+                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
+                        </a>
+
+                        <a href="{{action('ShowController@deleteShow', [$show->id])}}">
+                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                        </a></div>
+                    </div>
+
+                @empty
+                    <div class="list-empty">No hay ningún show</div>
                 @endforelse
             </div>
         </div>

@@ -26,4 +26,34 @@ class Show extends Model
     protected $fillable = [
         'date'
     ];
+
+    public function createShow($date, $event, $ubication) {
+    
+        $this->date = $date;
+
+        $this->event_id = $event[0] + 1;
+
+        $this->ubication_id = $ubication[0] + 1;
+
+        $this->save();
+    }
+
+    public static function borrarShow($id) {
+        $e = Show::find($id);
+        $e->delete();
+    }
+
+    public static function editShow($date, $event, $ubication, $id) {
+
+        $e = Show::find($id);
+
+        if($date != null)
+            $e->date = $date;
+
+        $e->event_id = $event[0] + 1;
+
+        $e->ubication_id = $ubication[0] + 1;
+
+        $e->save();
+    }
 }
