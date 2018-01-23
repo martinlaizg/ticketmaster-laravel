@@ -7,7 +7,6 @@ use DB;
 
 use App\Event;
 use App\Show;
-use DB;
 
 class EventService{
 
