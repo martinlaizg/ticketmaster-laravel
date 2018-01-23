@@ -26,7 +26,22 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Event::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->text(50),
-        'genre_id' => 1,
+        'genre_id' => random_int(1, 4),
         'description' => $faker->text(100)
+    ];
+});
+
+$factory->define(App\Show::class, function (Faker\Generator $faker) {
+    return [
+		'date' => $faker->dateTimeBetween('- 30 days', '+ 30 days', null),
+		'event_id' => random_int(1, 20),
+		'ubication_id' => random_int(1, 10)
+    ];
+});
+
+$factory->define(App\Ubication::class, function (Faker\Generator $faker) {
+    return [
+		'name' => $faker->text(20),
+		'location' => $faker->text(20)
     ];
 });

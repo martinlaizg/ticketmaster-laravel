@@ -10,6 +10,7 @@ use App\Event;
 use App\Service\EventService;
 use App\Genre;
 use App\Category;
+use App\Ubication;
 
 class EventController extends Controller
 {
@@ -66,22 +67,21 @@ class EventController extends Controller
 	}
 	
 	public function getEvents(Request $request) {
-		//dd($request);
 		$events = EventService::getEventsFilter($request->genre_id, $request->date, $request->ubication);
-		/*
+		
 		return view('event.eventList',[
-			'events' => $events,
-			'categories' => Category::get(),
-			'ubications' => []
-		]);
-		 */
-		return view('event.eventList',[
-			'events' => $events->paginate(5),
-			'categories' => Genre::get(),
-			'ubications' => [],
+			'events' => $events->paginate(10),
+			'categories' => Category::all(),
+			'ubications' => Ubication::all(),
 			'genre' => $request->genre_id,
 			'date' => $request->date,
 			'ubication' => $request->ubication,
 		]);
+	}
+
+	public function getEvent(Request $request, $id) {
+		$event = Event::where('id', '=', $id)->first();
+		
+		return view('event.event', [ 'event' => $event ]);
 	}
 }
