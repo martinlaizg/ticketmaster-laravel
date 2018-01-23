@@ -11,8 +11,9 @@ use App\Show;
 class EventService{
 
 	public static function nextEvents(){
-		//$events = Event::where('date', '>', Carbon::now())->get();
-		$events = Event::get();
+		$events = Event::whereHas('shows', function($query) {
+			$query->whereDate('date', '>=', Carbon::today()->toDateString());
+		});
 		return $events;
 	}
 	
@@ -27,17 +28,26 @@ class EventService{
 
 	public static function getEventsFilter($genre, $date, $ubication){
 		$events = Event::with('shows');
-		//$events = DB::table('events')->join('shows', 'events.id', '=', 'shows.event_id');
+
 		if($genre) {
 			$events = $events->where('genre_id', $genre);
 		}
-		// if($date) {
-		// 	$events = $events->where('date', $date);
-		// }
-		// dd($events->get());
-		// if($ubication) {
-		// 	$events = $events->where('ubication', $ubication);
-		// }
+
+		if($date) {
+			$events = $events->whereHas('shows', function($query) use($date) {
+				$query->whereDate('date', '=', $date);
+			});
+		}
+		else {
+			$events = $events->whereHas('shows', function($query) {
+				$query->whereDate('date', '>=', Carbon::today()->toDateString());
+			});
+		}
+
+		if($ubication) {
+			$events = $events->where('ubication', $ubication);
+		}
+
 		return $events;
 	}
 

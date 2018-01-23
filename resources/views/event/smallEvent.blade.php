@@ -5,7 +5,7 @@
 		</div>
 		<div class="panel-body">
 			<p>{!! $event->description !!}</p>
-			<button type="button" class="btn btn-info btn-xs">{{ $event->genre->name }}</button>
+			<label class="label label-info">{{ $event->genre->name }}</label>
 		</div>
 	</div>
 </div>
