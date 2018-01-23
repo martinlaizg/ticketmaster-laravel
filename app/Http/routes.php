@@ -15,11 +15,14 @@ Route::get('/', 'HomeController@home');
 
 Route::auth();
 
-Route::get('/profile', 'UserController@getProfile');
-
 Route::get('/home', 'HomeController@index');
 
-Route::get('/user/update', 'UserController@getUpdateForm');
+Route::group(['prefix' => 'user'], function() {
+
+    Route::get('profile', 'UserController@getProfile');
+    Route::get('update/{id}', 'UserController@getUpdateForm');
+    Route::post('update/{id}', 'UserController@updateForm');
+});
 
 Route::group(['prefix' => 'event'], function() {
 	Route::any('/', 'EventController@getEvents');

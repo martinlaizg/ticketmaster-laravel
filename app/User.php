@@ -34,4 +34,30 @@ class User extends Authenticatable
     public function isAdmin() {
         return (!strcmp($this->role, "Admin"));
     }
+
+    public static function editUser($name, $surname, $bdate, $country, $poblation, $id) {
+        $u = User::findOrFail($id);
+
+        if($name != null) {
+            $u->name = $name;
+        }
+
+        if($surname != null) {
+            $u->surname = $surname;
+        }
+
+        if($bdate != null) {
+            $u->bdate = $bdate;
+        }
+
+        if($country != null) {
+            $u->country = $country;
+        }
+
+        if($poblation != null) {
+            $u->poblation = $poblation;
+        }
+
+        $u->save();
+    }
 }
