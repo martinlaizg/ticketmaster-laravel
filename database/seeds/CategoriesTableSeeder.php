@@ -13,18 +13,18 @@ class CategoriesTableSeeder extends Seeder
     {
         DB::table('categories')->insert([
             'name' => 'Musica',
+		]);
+
+        DB::table('categories')->insert([
+            'name' => 'Arte y Teatro',
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Teatro',
+            'name' => 'Festivales',
         ]);
 
         DB::table('categories')->insert([
-            'name' => 'Quedada',
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Dembow',
+            'name' => 'Deportes',
         ]);
     }
 }
