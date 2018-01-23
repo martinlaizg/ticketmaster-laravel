@@ -26,15 +26,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Event::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->text(50),
-        'genre_id' => random_int(1, 4),
+        'genre_id' => random_int(1, 26),
         'description' => $faker->text(100)
     ];
 });
 
 $factory->define(App\Show::class, function (Faker\Generator $faker) {
     return [
-		'date' => $faker->dateTimeBetween('- 30 days', '+ 30 days', null),
-		'event_id' => random_int(1, 20),
+		'date' => $faker->dateTimeBetween('- 100 days', '+ 100 days', null),
+		'event_id' => random_int(1, 100),
 		'ubication_id' => random_int(1, 10)
     ];
 });
