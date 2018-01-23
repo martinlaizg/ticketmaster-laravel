@@ -27,21 +27,27 @@ class EventService{
 	}
 
 	public static function getEventsFilter($genre, $date, $ubication){
-		$events = Event::whereHas('shows', function($query) {
-			$query->where('id', '=', 1);
-		});
-		dd($events->get());
-		//$events = DB::table('events')->join('shows', 'events.id', '=', 'shows.event_id');
+		$events = Event::with('shows');
+
 		if($genre) {
 			$events = $events->where('genre_id', $genre);
 		}
-		// if($date) {
-		// 	$events = $events->where('date', $date);
-		// }
-		// dd($events->get());
-		// if($ubication) {
-		// 	$events = $events->where('ubication', $ubication);
-		// }
+
+		if($date) {
+			$events = $events->whereHas('shows', function($query) use($date) {
+				$query->whereDate('date', '=', $date);
+			});
+		}
+		else {
+			$events = $events->whereHas('shows', function($query) {
+				$query->whereDate('date', '>=', Carbon::today()->toDateString());
+			});
+		}
+
+		if($ubication) {
+			$events = $events->where('ubication', $ubication);
+		}
+
 		return $events;
 	}
 
