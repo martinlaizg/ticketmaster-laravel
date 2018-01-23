@@ -38,7 +38,7 @@ class HomeController extends Controller
 	{
 		$events = EventService::nextEvents();
 		return view('main',[
-			'events' => $events
+			'events' => $events->paginate(20)
 		]);
 	}
 	
