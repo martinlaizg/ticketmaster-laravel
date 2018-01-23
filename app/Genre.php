@@ -13,9 +13,9 @@ class Genre extends Model
         return $this->hasMany('App\Event');
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->hasMany('App\Category');
+        return $this->belongsTo('App\Category');
     }
 
     protected $fillable = [

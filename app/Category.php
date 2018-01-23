@@ -8,9 +8,9 @@ class Category extends Model
 {
     protected $table = 'categories';
 
-    public function genre()
+    public function genres()
     {
-        return $this->belongsTo('App\Genre');
+        return $this->hasMany('App\Genre');
     }
 
     protected $fillable = [

@@ -30,3 +30,17 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
         'description' => $faker->text(100)
     ];
 });
+
+$factory->define(App\Show::class, function (Faker\Generator $faker) {
+    return [
+		'date' => $faker->dateTimeBetween('- 30 days', '+ 30 days', null),
+		'event_id' => random_int(1, 20),
+		'ubication_id' => random_int(1, 10)
+    ];
+});
+
+$factory->define(App\Ubication::class, function (Faker\Generator $faker) {
+    return [
+		'location' => $faker->text(20)
+    ];
+});
