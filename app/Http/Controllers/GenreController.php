@@ -13,7 +13,7 @@ use App\Category;
 class GenreController extends Controller
 {
     public function createGenreView() {
-        $categories = Category::all()->lists('name');
+        $categories = Category::all()->lists('name', 'id');
 
         return view('create_genre', ['categories' => $categories]);
     }
@@ -35,7 +35,7 @@ class GenreController extends Controller
 
     public function editGenreView($id) {
         $e = Genre::findOrFail($id);
-        $categories = Category::all()->lists('name');
+        $categories = Category::all()->lists('name', 'id');
 
         return view('edit_genre', ['genre' => $e, 'categories' => $categories]);
     }

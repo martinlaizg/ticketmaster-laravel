@@ -26,7 +26,7 @@ class Genre extends Model
     
         $this->name = $name;
 
-        $this->category_id = $category[0] + 1;
+        $this->category_id = $category;
 
         $this->save();
     }
@@ -43,7 +43,7 @@ class Genre extends Model
         if($name != null)
             $e->name = $name;
 
-        $e->category_id = $category[0] + 1;
+        $e->category_id = $category;
 
         $e->save();
     }

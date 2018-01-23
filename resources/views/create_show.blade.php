@@ -11,8 +11,7 @@
         <div>
 
         <h4> <span class="label label-primary">Evento</span></h4></div>    
-        {!! Form::select('event[]', ($events), null, 
-            ['multiple'=>false,'class' => 'form-control margin']) !!}
+        {!! Form::select('event', $events) !!}
 
         </div>
 
@@ -20,8 +19,7 @@
 		<input class="form-control" type="date" name="date" id="date">
                         
         <h4> <span class="label label-primary">Ubicacion</span></h4>  
-        {!! Form::select('ubication[]', ($ubications), null, 
-            ['multiple'=>false,'class' => 'form-control margin']) !!}
+        {!! Form::select('ubication', $ubications) !!}
 
         {!! Form::button('<span class="glyphicon glyphicon-floppy-saved"></span> Crear Show',
              ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
