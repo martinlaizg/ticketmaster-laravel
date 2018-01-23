@@ -30,4 +30,4 @@
 		{{ $user->poblation }}
 	</li>
 </ul>
-<a class="btn btn-info btn-block" href="{{ action('UserController@getUpdateForm') }}">Editar</a>
+<a class="btn btn-info btn-block" href="{{ action('UserController@updateForm', [$user->id]) }}">Editar</a>
