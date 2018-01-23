@@ -35,7 +35,9 @@ class User extends Authenticatable
         return (!strcmp($this->role, "Admin"));
     }
 
-    public static function editUser($name, $surname, $bdate, $country, $poblation, $id) {
+    public static function editUser($name, $surname, $bdate, $country, 
+        $poblation, $password, $email, $role, $id) {
+
         $u = User::findOrFail($id);
 
         if($name != null) {
@@ -58,10 +60,31 @@ class User extends Authenticatable
             $u->poblation = $poblation;
         }
 
+        if($password != null) {
+            $u->password = bcrypt($password);
+        }
+
+        if($email != null) {
+            $u->email = $email;
+        }
+
+        if($role != null) {
+
+            if($role == 0) {
+                $u->role = "Guest";
+            }
+
+            if($role == 1) {
+                $u->role = "Admin";
+            }
+        }
+
         $u->save();
     }
 
-    public static function createUserAdmin($name, $surname, $bdate, $country, $poblation, $password, $email, $role) {
+    public static function createUserAdmin($name, $surname, $bdate, $country, 
+        $poblation, $password, $email, $role) {
+
         $u = new User();
 
         if($name != null) {

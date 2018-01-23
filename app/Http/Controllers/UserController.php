@@ -20,7 +20,8 @@ class UserController extends Controller
 
 	public function updateForm(Request $request, $id) {
 		User::editUser($request->name, $request->surname, $request->bdate, 
-			$request->country, $request->poblation, $id);
+			$request->country, $request->poblation, $request->password, 
+			$request->email, $request->role, $id);
 
 		return redirect()->action('UserController@getProfile');
 	}
