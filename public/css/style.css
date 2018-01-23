@@ -18,3 +18,11 @@
 .link-header:hover {
 	color: aqua;
 }
+
+.oscurecer {
+	background-color: rgba(97, 97, 97, 0.3)
+}
+
+a.disabled {
+	pointer-events: none;
+}

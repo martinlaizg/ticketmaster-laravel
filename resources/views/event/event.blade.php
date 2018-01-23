@@ -32,7 +32,7 @@
 	<div class="col-sm-7">
 		<h3>Shows</h3>
 		<hr>
-		@foreach( $event->shows as $show )
+		@foreach( $event->shows->sortBy('date') as $show )
 			@include('event.smallShow', [ 'show' => $show ])
 		@endforeach
 	</div>

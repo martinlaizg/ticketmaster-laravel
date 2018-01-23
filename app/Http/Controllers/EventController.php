@@ -81,7 +81,7 @@ class EventController extends Controller
 
 	public function getEvent(Request $request, $id) {
 		$event = Event::where('id', '=', $id)->first();
-		
+		//dd($event);
 		return view('event.event', [ 'event' => $event ]);
 	}
 }
