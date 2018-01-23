@@ -14,30 +14,25 @@
 					<label for="genre_id" class="control-label">Genero</label>
 					<select class="form-control" name="genre_id" id="genre_id" value="{{ old('genre_id') }}">
 					<option value="">Todos</option>
-					@foreach($categories as $thisCategory)
-					<option value="{{ $thisCategory->id }}" @if($genre == $thisCategory->id ) selected @endif>{{ $thisCategory->name }}</option>
-					@endforeach
-					{{--
 					@foreach( $categories as $thisCategory )
 					<optgroup label="{{ $thisCategory->name }}">
-							@foreach( $thisCategory->genres() as $genre )
-							<option value="{{ $genre->id }}"></option>
+							@foreach( $thisCategory->genres as $thisGenre )
+							<option value="{{ $thisGenre->id }}" @if($genre == $thisGenre->id) selected @endif>{{ $thisGenre->name }}</option>
 						@endforeach
 					</optgroup>
 					@endforeach
-					--}}
 				</select>
 				</div>
 				<br>
 				<div>
 					<label for="date" class="control-label">Fecha</label>
-					<input class="form-control" type="date" name="date" id="date">
+					<input class="form-control" type="date" name="date" id="date" value="{{ $date }}">
 				</div>
 				<br>
 				<div>
 					<label for="ubication" class="control-label">Ubicación</label>
 					<select class="form-control" name="ubication" id="ubication">
-					<option value="">To-Do</option>
+					<option value="">Todos</option>
 					@foreach( $ubications as $thisUbication )
 					<option value="{{ $thisUbication->id }}" @if($ubication == $thisUbication->id ) selected @endif>{{ $thisUbication->name }}</option>
 					@endforeach
