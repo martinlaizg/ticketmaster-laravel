@@ -31,9 +31,9 @@ class Show extends Model
     
         $this->date = $date;
 
-        $this->event_id = $event[0] + 1;
+        $this->event_id = $event;
 
-        $this->ubication_id = $ubication[0] + 1;
+        $this->ubication_id = $ubication;
 
         $this->save();
     }
@@ -50,9 +50,9 @@ class Show extends Model
         if($date != null)
             $e->date = $date;
 
-        $e->event_id = $event[0] + 1;
+        $e->event_id = $event;
 
-        $e->ubication_id = $ubication[0] + 1;
+        $e->ubication_id = $ubication;
 
         $e->save();
     }

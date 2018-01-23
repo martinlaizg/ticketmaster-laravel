@@ -16,7 +16,7 @@ class EventController extends Controller
 {
     public function createEventView() {
 
-        $genres = Genre::all()->lists('name');
+        $genres = Genre::all()->lists('name', 'id');
 
         return view('create_event', ['genres' => $genres]);
     }
@@ -54,7 +54,7 @@ class EventController extends Controller
     }
     
     public function editEventView($id) {
-        $genres = Genre::all()->lists('name');
+        $genres = Genre::all()->lists('name', 'id');
         $e = Event::findOrFail($id);
 
         return view('edit_event', ['event' => $e, 'genres' => $genres]);

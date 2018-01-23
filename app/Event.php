@@ -26,7 +26,7 @@ class Event extends Model
     
         $this->name = $name;
         $this->description = $description;
-        $this->genre_id = $genre[0] + 1;
+        $this->genre_id = $genre;
 
         $this->save();
     }
@@ -46,7 +46,7 @@ class Event extends Model
         if($description != null)
             $e->description = $description;
 
-        $e->genre_id = $genre[0] + 1;
+        $e->genre_id = $genre;
 
         $e->save();
     }
