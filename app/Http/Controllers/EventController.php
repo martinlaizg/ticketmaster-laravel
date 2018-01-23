@@ -83,4 +83,9 @@ class EventController extends Controller
 			'ubication' => $request->ubication,
 		]);
 	}
+
+	public function getEvent(Request $request, $id) {
+		$event = Event::where('id', '=', $id)->first();
+		return view('event.event', [ 'event' => $event ]);
+	}
 }
