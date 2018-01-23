@@ -35,12 +35,56 @@
         <li><a data-toggle="tab" href="#genresAdmin">Géneros</a></li>
         <li><a data-toggle="tab" href="#categoriesAdmin">Categorias</a></li>
         <li><a data-toggle="tab" href="#ubicationsAdmin">Ubicaciones</a></li>
+        <li><a data-toggle="tab" href="#usersAdmin">Usuarios</a></li>
     </ul>
   
     <div class="tab-content">
         <div id="homeAdmin" class="tab-pane fade in active">
             <h3>Bienvenido a la zona de administracion</h3>
             <p>Desde aqui podrá editar las diferentes partes de la página</p>
+        </div>
+
+        <div id="usersAdmin" class="tab-pane fade">
+            <h3 class="margenBajo">Usuarios</h3>
+
+            <a href="{{action('UserController@createUserView')}}">Crear</a>
+            
+            <div class="container">
+                @forelse($users as $user)
+
+                <div class="panel panel-primary half">
+
+                    <div class="panel-heading">{{$user->email}} 
+                        <a href="{{action('UserController@getUpdateForm', [$user->id])}}">
+                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
+                        </a>
+
+                        <a href="{{action('UserController@deleteUser', [$user->id])}}">
+                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                        </a>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Nombre</strong>
+                                </span>
+                                {{ $user->name }}
+                            </li>
+                            <li class="list-group-item text-right">
+                                <span class="pull-left">
+                                    <strong>Apellidos</strong>
+                                </span>
+                                {{ $user->surname }}
+                            </li>
+                        </ul>
+                    </div>
+                </div>      
+                @empty
+                    <div class="list-empty">No hay ningún usuario</div>
+                @endforelse
+            </div>
         </div>
 
         <div id="eventsAdmin" class="tab-pane fade">

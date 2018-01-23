@@ -60,4 +60,52 @@ class User extends Authenticatable
 
         $u->save();
     }
+
+    public static function createUserAdmin($name, $surname, $bdate, $country, $poblation, $password, $email, $role) {
+        $u = new User();
+
+        if($name != null) {
+            $u->name = $name;
+        }
+
+        if($surname != null) {
+            $u->surname = $surname;
+        }
+
+        if($bdate != null) {
+            $u->bdate = $bdate;
+        }
+
+        if($country != null) {
+            $u->country = $country;
+        }
+
+        if($poblation != null) {
+            $u->poblation = $poblation;
+        }
+
+        if($password != null) {
+            $u->password = bcrypt($password);
+        }
+
+        if($email != null) {
+            $u->email = $email;
+        }
+
+        if($role == 0) {
+            $u->role = "Guest";
+        }
+
+        if($role == 1) {
+            $u->role = "Admin";
+        }
+
+        $u->save();
+    }
+
+    public static function deleteUser($id) {
+        $u = User::findOrFail($id);
+
+        $u->delete();
+    }
 }

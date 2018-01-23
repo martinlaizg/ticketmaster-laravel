@@ -32,4 +32,22 @@ class UserController extends Controller
 			'nextTickets' => UserService::nextTickets($user->id)
 		]);
 	}
+
+	public function createUserView() {
+		return view('create_user');
+	}
+
+	public function createUser(Request $request) {
+		User::createUserAdmin($request->name, $request->surname, $request->bdate, 
+			$request->country, $request->poblation, $request->password, 
+			$request->email, $request->role);
+
+		return redirect()->action('HomeController@adminZone');
+	}
+
+	public function deleteUser($id) {
+		User::deleteUser($id);
+
+		return redirect()->action('HomeController@adminZone');
+	}
 }

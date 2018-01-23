@@ -22,6 +22,9 @@ Route::group(['prefix' => 'user'], function() {
     Route::get('profile', 'UserController@getProfile');
     Route::get('update/{id}', 'UserController@getUpdateForm');
     Route::post('update/{id}', 'UserController@updateForm');
+    Route::get('create', 'UserController@createUserView');
+    Route::post('create', 'UserController@createUser');
+    Route::get('delete/{id}', 'UserController@deleteUser');
 });
 
 Route::group(['prefix' => 'event'], function() {
