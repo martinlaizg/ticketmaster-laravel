@@ -3,7 +3,7 @@
 	- ~Registro~
 	- ~Buscar shows~
 - Privado:
-	- Login
+	- ~Login~
 	- Tickets:
 		- Comprar
 		- Devolver
