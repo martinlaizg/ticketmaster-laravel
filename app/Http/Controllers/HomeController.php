@@ -56,4 +56,8 @@ class HomeController extends Controller
             'ubications' => $ubications, 'shows' => $shows, 
             'users' => $users]);
     }
+
+    public function badRequest() {
+        return view('noAutorizado');
+    }
 }
