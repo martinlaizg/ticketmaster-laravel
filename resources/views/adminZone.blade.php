@@ -18,6 +18,14 @@
     margin-bottom: 1em;
 }
 
+.margenDerechaIcon {
+    margin-right: 0.5em;
+}
+
+.divDerecha {
+    float: right;
+}
+
 @endsection
 
 @section('content')
@@ -29,39 +37,41 @@
 <div class="container">
    
     <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#homeAdmin">Bienvenido</a></li>
+        <li class="active"><a data-toggle="tab" href="#usersAdmin">Usuarios</a></li>
         <li><a data-toggle="tab" href="#eventsAdmin">Eventos</a></li>  
         <li><a data-toggle="tab" href="#showsAdmin">Shows</a></li>
         <li><a data-toggle="tab" href="#genresAdmin">Géneros</a></li>
         <li><a data-toggle="tab" href="#categoriesAdmin">Categorias</a></li>
         <li><a data-toggle="tab" href="#ubicationsAdmin">Ubicaciones</a></li>
-        <li><a data-toggle="tab" href="#usersAdmin">Usuarios</a></li>
     </ul>
   
     <div class="tab-content">
-        <div id="homeAdmin" class="tab-pane fade in active">
-            <h3>Bienvenido a la zona de administracion</h3>
-            <p>Desde aqui podrá editar las diferentes partes de la página</p>
-        </div>
+        <div id="usersAdmin" class="tab-pane fade in active">
+            <h3>Usuarios</h3>
 
-        <div id="usersAdmin" class="tab-pane fade">
-            <h3 class="margenBajo">Usuarios</h3>
+            <a href="{{action('UserController@createUserView')}}"><button class="btn btn-info btn-lg margenBajo">Crear</button></a>
 
-            <a href="{{action('UserController@createUserView')}}">Crear</a>
-            
             <div class="container">
+                {{$users->links()}}
+            </div>
+
+            <div class="container">
+
                 @forelse($users as $user)
 
                 <div class="panel panel-primary half">
 
                     <div class="panel-heading">{{$user->email}} 
-                        <a href="{{action('UserController@getUpdateForm', [$user->id])}}">
-                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
-                        </a>
 
-                        <a href="{{action('UserController@deleteUser', [$user->id])}}">
-                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
-                        </a>
+                        <div class="divDerecha">
+                            <a href="{{action('UserController@getUpdateForm', [$user->id])}}">
+                                <span class="glyphicon glyphicon-pencil margenDerechaIcon" style="color:white"></span>
+                            </a>
+
+                            <a href="{{action('UserController@deleteUser', [$user->id])}}">
+                                <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                            </a>
+                        </div>
                     </div>
 
                     <div class="panel-body">
@@ -85,41 +95,57 @@
                     <div class="list-empty">No hay ningún usuario</div>
                 @endforelse
             </div>
+
+            <div class="container">
+                {{$users->links()}}
+            </div>
         </div>
 
         <div id="eventsAdmin" class="tab-pane fade">
-            <h3 class="margenBajo">Eventos</h3> 
+            <h3>Eventos</h3> 
             
-            <a href="{{action('EventController@createEventView')}}">Crear</a>
+            <a href="{{action('EventController@createEventView')}}"><button class="btn btn-info btn-lg margenBajo">Crear</button></a>
             
             <div class="container">
-                @forelse($events as $event)
 
-                    <div class="panel panel-primary half">
-                        <div class="panel-heading">{{$event->name}}
+                @forelse($genres as $genre)
 
-                        <a href="{{action('EventController@editEventView', [$event->id])}}">
-                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
-                        </a>
+                    <h4><strong>{{$genre->name}}</strong></h4>
+                    <hr style="border-width: 0.5em;">
 
-                        <a href="{{action('EventController@deleteEvent', [$event->id])}}">
-                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
-                        </a></div>
+                    @foreach($events as $event)
 
-                        <div class="panel-body">{{$event->description}}</div>
-                    </div>
+                        @if($event->genre_id == $genre->id)
+                            <div class="panel panel-primary half">
+                                <div class="panel-heading">{{$event->name}}
+
+                                <div class="divDerecha">
+                                    <a href="{{action('EventController@editEventView', [$event->id])}}">
+                                        <span class="glyphicon glyphicon-pencil margenDerechaIcon" style="color:white"></span>
+                                    </a>
+
+                                    <a href="{{action('EventController@deleteEvent', [$event->id])}}">
+                                        <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                                    </a></div></div>
+
+                                <div class="panel-body">{{$event->description}}</div>
+                            </div>
+                        @endif
+
+                    @endforeach
 
                 @empty
                     <div class="list-empty">No hay ningún evento</div>
                 @endforelse
+
             </div>
 
         </div>
 
         <div id="categoriesAdmin" class="tab-pane fade">
-            <h3 class="margenBajo">Categorias</h3>
+            <h3>Categorias</h3>
 
-            <a href="{{action('CategoryController@createCategoryView')}}">Crear</a>
+            <a href="{{action('CategoryController@createCategoryView')}}"><button class="btn btn-info btn-lg margenBajo">Crear</button></a>
 
             <div class="container">
                 @forelse($categories as $category)
@@ -127,13 +153,15 @@
                     <div class="panel panel-primary half-sm">
                         <div class="panel-heading">{{$category->name}}
 
-                        <a href="{{action('CategoryController@editCategoryView', [$category->id])}}">
-                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
-                        </a>
+                        <div class="divDerecha">
 
-                        <a href="{{action('CategoryController@deleteCategory', [$category->id])}}">
-                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
-                        </a></div>
+                            <a href="{{action('CategoryController@editCategoryView', [$category->id])}}">
+                                <span class="glyphicon glyphicon-pencil margenDerechaIcon" style="color:white"></span>
+                            </a>
+
+                            <a href="{{action('CategoryController@deleteCategory', [$category->id])}}">
+                                <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                            </a></div></div>
                     </div>
 
                 @empty
@@ -143,24 +171,38 @@
         </div>
 
         <div id="genresAdmin" class="tab-pane fade">
-            <h3 class="margenBajo">Géneros</h3>
+            <h3>Géneros</h3>
 
-            <a href="{{action('GenreController@createGenreView')}}">Crear</a>
+            <a href="{{action('GenreController@createGenreView')}}"><button class="btn btn-info btn-lg margenBajo">Crear</button></a>
             
             <div class="container">
-                @forelse($genres as $genre)
 
-                    <div class="panel panel-primary half-sm">
-                        <div class="panel-heading">{{$genre->name}} 
+                @forelse($categories as $category)
 
-                        <a href="{{action('GenreController@editGenreView', [$genre->id])}}">
-                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
-                        </a>
+                    <h4><strong>{{$category->name}}</strong></h4>
+                    <hr style="border-width: 0.5em;">
 
-                        <a href="{{action('GenreController@deleteGenre', [$genre->id])}}">
-                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
-                        </a></div>
-                    </div>
+                    @foreach($genres as $genre)
+
+                        @if($genre->category_id == $category->id)
+
+                            <div class="panel panel-primary half-sm">
+                                <div class="panel-heading">{{$genre->name}} 
+
+                                <div class="divDerecha">
+
+                                    <a href="{{action('GenreController@editGenreView', [$genre->id])}}">
+                                        <span class="glyphicon glyphicon-pencil margenDerechaIcon" style="color:white"></span>
+                                    </a>
+
+                                    <a href="{{action('GenreController@deleteGenre', [$genre->id])}}">
+                                        <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                                    </a></div></div>
+                            </div>
+
+                        @endif
+
+                    @endforeach
 
                 @empty
                     <div class="list-empty">No hay ningún género</div>
@@ -169,9 +211,9 @@
         </div>
 
         <div id="ubicationsAdmin" class="tab-pane fade">
-            <h3 class="margenBajo">Ubicaciones</h3>
+            <h3>Ubicaciones</h3>
 
-            <a href="{{action('UbicationController@createUbicationView')}}">Crear</a>
+            <a href="{{action('UbicationController@createUbicationView')}}"><button class="btn btn-info btn-lg margenBajo">Crear</button></a>
             
             <div class="container">
                 @forelse($ubications as $ubication)
@@ -179,13 +221,15 @@
                     <div class="panel panel-primary half-sm">
                         <div class="panel-heading">{{$ubication->location}} 
 
-                        <a href="{{action('UbicationController@editUbicationView', [$ubication->id])}}">
-                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
-                        </a>
+                        <div class="divDerecha">
 
-                        <a href="{{action('UbicationController@deleteUbication', [$ubication->id])}}">
-                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
-                        </a></div>
+                            <a href="{{action('UbicationController@editUbicationView', [$ubication->id])}}">
+                                <span class="glyphicon glyphicon-pencil margenDerechaIcon" style="color:white"></span>
+                            </a>
+
+                            <a href="{{action('UbicationController@deleteUbication', [$ubication->id])}}">
+                                <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                            </a></div></div>
                     </div>
 
                 @empty
@@ -195,28 +239,43 @@
         </div>
 
         <div id="showsAdmin" class="tab-pane fade">
-            <h3 class="margenBajo">Shows</h3>
+            <h3>Shows</h3>
 
-            <a href="{{action('ShowController@createShowView')}}">Crear</a>
+            <a href="{{action('ShowController@createShowView')}}"><button class="btn btn-info btn-lg margenBajo">Crear</button></a>
             
             <div class="container">
-                @forelse($shows as $show)
 
-                    <div class="panel panel-primary half-sm">
-                        <div class="panel-heading">{{$show->date}} 
+                @forelse($events as $event)
 
-                        <a href="{{action('ShowController@editShowView', [$show->id])}}">
-                            <span class="glyphicon glyphicon-pencil" style="color:white"></span>
-                        </a>
+                    <h4><strong>{{$event->name}}</strong></h4>
+                    <hr style="border-width: 0.5em;">
 
-                        <a href="{{action('ShowController@deleteShow', [$show->id])}}">
-                            <span class="glyphicon glyphicon-remove" style="color:red"></span>
-                        </a></div>
-                    </div>
+                    @foreach($shows as $show)
+
+                        @if($show->event_id == $event->id)
+
+                            <div class="panel panel-primary half-sm">
+                                <div class="panel-heading">{{$show->date}} 
+
+                                <div class="divDerecha">
+
+                                    <a href="{{action('ShowController@editShowView', [$show->id])}}">
+                                        <span class="glyphicon glyphicon-pencil margenDerechaIcon" style="color:white"></span>
+                                    </a>
+
+                                    <a href="{{action('ShowController@deleteShow', [$show->id])}}">
+                                        <span class="glyphicon glyphicon-remove" style="color:red"></span>
+                                    </a></div></div>
+                            </div>
+
+                        @endif
+
+                    @endforeach
 
                 @empty
                     <div class="list-empty">No hay ningún show</div>
                 @endforelse
+
             </div>
         </div>
     </div>
