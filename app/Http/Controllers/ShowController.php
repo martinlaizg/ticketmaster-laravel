@@ -44,5 +44,11 @@ class ShowController extends Controller
         Show::editShow($request->date, $request->event, $request->ubication, $id);
 
         return redirect()->action('HomeController@adminZone');
-    }
+	}
+
+	public function getShow(Request $request, $id) {
+		$show = Show::find($id);
+
+		return view('event.show');
+	}
 }
