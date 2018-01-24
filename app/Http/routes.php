@@ -40,10 +40,13 @@ Route::group(['prefix' => 'show'], function() {
 	Route::get('{id}', 'ShowController@getShow');
 });
 
-Route::group(['prefix' => 'user'], function() {
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
 	Route::get('profile', 'UserController@getProfile');
-	Route::get('update/{id}', 'UserController@getUpdateForm');
-	Route::post('update/{id}', 'UserController@updateForm');
+
+	Route::group(['middleware' => 'only'], function () {
+		Route::get('update/{id}', 'UserController@getUpdateForm');
+		Route::post('update/{id}', 'UserController@updateForm');
+	});
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'adminzone']], function () {
