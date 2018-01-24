@@ -40,8 +40,15 @@ $factory->define(App\Show::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Ubication::class, function (Faker\Generator $faker) {
+	$cols = random_int(20, 30);
+	$rows = random_int(20, 30);
+	$seats = $cols * $rows;
     return [
 		'name' => $faker->text(20),
-		'location' => $faker->text(20)
+		'location' => $faker->text(20),
+		'seatable' => (bool)random_int(0, 1),
+		'seats' => $seats,
+		'cols' => $cols,
+		'rows' => $rows
     ];
 });
