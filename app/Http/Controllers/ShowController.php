@@ -41,7 +41,7 @@ class ShowController extends Controller
     }
 
     public function editShow(Request $request, $id) {
-        Show::editShow($request->date, $request->event, $request->ubication, $id);
+        Show::editShow($request->date, $request->event[0], $request->ubication[0], $id);
 
         return redirect()->action('HomeController@adminZone');
 	}

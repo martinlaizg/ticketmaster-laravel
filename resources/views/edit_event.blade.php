@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Editar Evento</h1>
 
-    {!! Form::open(['url' => '/event/edit/' . $event->id]) !!}
+    {!! Form::open(['action' => [ 'EventController@editEvent', $event->id]]) !!}
     <div class="form-group">
 
         <div>

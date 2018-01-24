@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Crear Género</h1>
 
-    {!! Form::open(['url' => '/genre/create/']) !!}
+    {!! Form::open(['action' => 'GenreController@createGenre']) !!}
     <div class="form-group">
 
         <div>

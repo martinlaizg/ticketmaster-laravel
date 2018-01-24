@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Editar Categoria</h1>
 
-    {!! Form::open(['url' => '/category/edit/' . $category->id]) !!}
+    {!! Form::open(['action' => [ 'CategoryController@editCategory', $category->id ]) !!}
     <div class="form-group">
 
         <div>

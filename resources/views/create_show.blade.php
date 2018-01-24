@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Crear Show</h1>
 
-    {!! Form::open(['url' => '/show/create/']) !!}
+    {!! Form::open(['action' => 'ShowController@createShow']) !!}
     <div class="form-group">
 
         <div>

@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Editar Género</h1>
 
-    {!! Form::open(['url' => '/genre/edit/' . $genre->id]) !!}
+    {!! Form::open(['action' => [ 'GenreController@editGenre', $genre->id]]) !!}
     <div class="form-group">
 
         <div>

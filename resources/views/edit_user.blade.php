@@ -13,7 +13,7 @@
 <div class="container">
     <h1>Editar perfil</h1>
 
-    {!! Form::open(['url' => '/user/update/' . $user->id]) !!}
+    {!! Form::open(['action' => ['UserController@updateForm', $user->id ]]) !!}
     <div class="form-group">
         <h4> <span class="label label-primary">Nombre</span></h4>
         {!! Form::text('name', $user->name, ['class' => 'field', 'placeholder' => 'Nombre',
