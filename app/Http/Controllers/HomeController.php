@@ -9,6 +9,7 @@ use App\Category;
 use App\Genre;
 use App\Ubication;
 use App\Show;
+use App\User;
 
 use App\Service\EventService;
 
@@ -48,9 +49,11 @@ class HomeController extends Controller
         $categories = Category::all();
         $ubications = Ubication::all();
         $shows = Show::all();
+        $users = User::all();
 
-        return view('adminZone', ['events'=>$events, 
-            'categories'=>$categories, 'genres'=>$genres, 
-            'ubications'=>$ubications, 'shows'=>$shows]);
+        return view('adminZone', ['events' => $events, 
+            'categories' => $categories, 'genres'=> $genres, 
+            'ubications' => $ubications, 'shows' => $shows, 
+            'users' => $users]);
     }
 }

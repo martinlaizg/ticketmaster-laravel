@@ -20,7 +20,8 @@ class UserController extends Controller
 
 	public function updateForm(Request $request, $id) {
 		User::editUser($request->name, $request->surname, $request->bdate, 
-			$request->country, $request->poblation, $id);
+			$request->country, $request->poblation, $request->password, 
+			$request->email, $request->role, $id);
 
 		return redirect()->action('UserController@getProfile');
 	}
@@ -31,5 +32,23 @@ class UserController extends Controller
 			'user' => $user,
 			'nextTickets' => UserService::nextTickets($user->id)
 		]);
+	}
+
+	public function createUserView() {
+		return view('create_user');
+	}
+
+	public function createUser(Request $request) {
+		User::createUserAdmin($request->name, $request->surname, $request->bdate, 
+			$request->country, $request->poblation, $request->password, 
+			$request->email, $request->role);
+
+		return redirect()->action('HomeController@adminZone');
+	}
+
+	public function deleteUser($id) {
+		User::deleteUser($id);
+
+		return redirect()->action('HomeController@adminZone');
 	}
 }
