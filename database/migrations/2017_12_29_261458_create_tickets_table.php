@@ -16,6 +16,8 @@ class CreateTicketsTable extends Migration
             $table->increments('id');
             $table->float('price');
             $table->integer('show_id')->unsigned();
+            $table->integer('col');
+            $table->integer('row');
             $table->integer('seat_id')->unsigned();
             $table->integer('payment_id')->unsigned();
             $table->timestamps();
