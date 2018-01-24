@@ -1,6 +1,6 @@
 <div class="panel panel-primary half @if($show->date < Carbon\Carbon::now()) oscurecer @endif">
 	<div class="panel-heading">
-		<a class="link-header @if($show->date < Carbon\Carbon::now()) disabled @endif" href="/">{{ $event->name }}</a>
+		<a class="link-header @if($show->date < Carbon\Carbon::now()) disabled @endif" href="{{ action('ShowController@getShow', $show->id) }}">{{ $event->name }}</a>
 	</div>
 	<div class="panel-body row">
 		<div class="col-sm-4">

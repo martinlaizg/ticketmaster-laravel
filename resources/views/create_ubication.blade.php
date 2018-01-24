@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Crear Ubicación</h1>
 
-    {!! Form::open(['url' => '/ubication/create/']) !!}
+    {!! Form::open(['action' => 'UbicationController@createUbication']) !!}
     <div class="form-group">
 
         <div>

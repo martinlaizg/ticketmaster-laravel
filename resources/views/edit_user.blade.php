@@ -19,7 +19,7 @@
 <div class="container">
     <h1>Editar perfil</h1>
 
-    {!! Form::open(['url' => '/user/update/' . $user->id]) !!}
+    {!! Form::open(['action' => ['UserController@updateForm', $user->id ]]) !!}
     <div class="form-group">
         
         <div class="half">

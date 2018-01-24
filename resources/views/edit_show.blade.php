@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Editar Show</h1>
 
-    {!! Form::open(['url' => '/show/edit/' . $show->id]) !!}
+    {!! Form::open(['action' => [ 'ShowController@editShow', $show->id]]) !!}
     <div class="form-group">
 
         <div>

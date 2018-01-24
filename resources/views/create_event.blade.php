@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Crear Evento</h1>
 
-    {!! Form::open(['url' => '/event/create/new/']) !!}
+    {!! Form::open(['action' => 'EventController@createEvent']) !!}
     <div class="form-group">
 
         <div>

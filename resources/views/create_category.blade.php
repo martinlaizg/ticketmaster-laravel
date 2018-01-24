@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Crear Categoria</h1>
 
-    {!! Form::open(['url' => '/category/create/']) !!}
+    {!! Form::open(['action' => 'CategoryController@createCategory']) !!}
     <div class="form-group">
 
         <div>

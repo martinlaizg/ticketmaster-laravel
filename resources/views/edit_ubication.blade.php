@@ -5,7 +5,7 @@
 <div class="container">
     <h1>Editar Ubicación</h1>
 
-    {!! Form::open(['url' => '/ubication/edit/' . $ubication->id]) !!}
+    {!! Form::open(['action' => [ 'UbicationController@editUbication', $ubication->id]]) !!}
     <div class="form-group">
 
         <div>
