@@ -8,7 +8,7 @@ class Ticket extends Model
 {
     protected $table = 'tickets';
 
-    public function users()
+    public function user()
     {
         return $this->belongsToMany('App\User');
     }
@@ -28,8 +28,5 @@ class Ticket extends Model
         return $this->belongsTo('App\PaymentMethod');
     }
 
-    protected $fillable = [
-        'price'
-    ];
 
 }

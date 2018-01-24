@@ -45,6 +45,7 @@ Route::group(['prefix' => 'ubication'], function() {
 
 Route::group(['prefix' => 'show'], function() {
 	Route::get('{id}', 'ShowController@getShow');
+	Route::post('{id}/buySeatable', 'ShowController@buySeatableTickets');
 });
 
 Route::group(['prefix' => 'admin'], function () {

@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 use App\Show;
 use App\Event;
 use App\Ubication;
+
+use App\Service\ShowService;
 
 class ShowController extends Controller
 {
@@ -50,5 +53,25 @@ class ShowController extends Controller
 		$show = Show::find($id);
 
 		return view('event.show', ['show' => $show]);
+	}
+
+	public function buySeatableTickets(Request $request, $id) {
+		$inputs = $request->all();
+		unset($inputs['_token']);
+		
+		foreach( $inputs as $seat => $value ){
+			$col = explode("-", $seat)[0];
+			$row = explode("-", $seat)[1];
+			if( ShowService::isOcupied($id, $col, $row) ) {
+				return redirect()->back()->withErrors(['message' => 'Ese asiento está ocupado.'])->withInput();
+			}
+		}
+
+		foreach( $inputs as $seat => $value ){
+			$col = explode("-", $seat)[0];
+			$row = explode("-", $seat)[1];
+			ShowService::buySeatTicket($id, Auth::user()->id, $col, $row);
+		}
+		return redirect()->action('ShowController@getShow', $id);
 	}
 }

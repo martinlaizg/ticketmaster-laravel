@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Service\ShowService;
 
 class Show extends Model
 {
@@ -24,7 +25,8 @@ class Show extends Model
     }
 
     protected $fillable = [
-        'date'
+		'date',
+		'price'
     ];
 
     public function createShow($date, $event, $ubication) {
@@ -55,5 +57,9 @@ class Show extends Model
         $e->ubication_id = $ubication;
 
         $e->save();
-    }
+	}
+	
+	public function isOcupied($id, $col, $row) {
+		return ShowService::isOcupied($id, $col, $row);
+	}
 }
