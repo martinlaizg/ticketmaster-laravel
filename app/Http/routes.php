@@ -15,16 +15,9 @@ Route::get('/', 'HomeController@home');
 
 Route::auth();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/unauthorized', 'HomeController@badRequest');
 
-Route::group(['prefix' => 'user'], function() {
-    Route::get('profile', 'UserController@getProfile');
-    Route::get('update/{id}', 'UserController@getUpdateForm');
-    Route::post('update/{id}', 'UserController@updateForm');
-    Route::get('create', 'UserController@createUserView');
-    Route::post('create', 'UserController@createUser');
-    Route::get('delete/{id}', 'UserController@deleteUser');
-});
+Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'event'], function() {
 	Route::any('/', 'EventController@getEvents');
@@ -47,7 +40,16 @@ Route::group(['prefix' => 'show'], function() {
 	Route::get('{id}', 'ShowController@getShow');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'user'], function() {
+	Route::get('profile', 'UserController@getProfile');
+	Route::get('update/{id}', 'UserController@getUpdateForm');
+	Route::post('update/{id}', 'UserController@updateForm');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'adminzone']], function () {
+	
+	Route::get('/', 'HomeController@adminZone');
+	
 	Route::group(['prefix' => 'event'], function() {
 		Route::post('create', 'EventController@createEvent');
 		Route::get('create', 'EventController@createEventView');
@@ -87,7 +89,11 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::post('edit/{id}', 'ShowController@editShow');
 		Route::get('edit/{id}', 'ShowController@editShowView');
 	});
-});
 
-Route::get('/admin', 'HomeController@adminZone');
+	Route::group(['prefix' => 'user'], function() {
+		Route::get('create', 'UserController@createUserView');
+		Route::post('create', 'UserController@createUser');
+		Route::get('delete/{id}', 'UserController@deleteUser');
+	});
+});
 
