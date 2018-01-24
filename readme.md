@@ -1,15 +1,21 @@
 # Requisitos para la entrega
 - Público:
-	- Registro.
-	- Buscar shows.
+	- ~Registro~
+	- ~Buscar shows~
 - Privado:
-	- Login.
+	- Login
 	- Tickets:
-		- Comprar.
-		- Devolver.
-		- Ver.
+		- Comprar
+		- Devolver
+		- Ver
 	- Calendario de eventos:
-		- Anteriores.
-		- Próximos.
-- Admin
- - Cruds de todos los elementos
+		- Anteriores
+		- Próximos
+- Admin:
+	- CRUDS:
+		- ~User~
+		- ~Event~
+		- ~Show~
+		- ~Category~
+		- ~Genre~
+		
