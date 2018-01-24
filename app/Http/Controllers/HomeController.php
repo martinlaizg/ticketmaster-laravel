@@ -49,7 +49,7 @@ class HomeController extends Controller
         $categories = Category::all();
         $ubications = Ubication::all();
         $shows = Show::all();
-        $users = User::all();
+        $users = User::paginate(14);
 
         return view('adminZone', ['events' => $events, 
             'categories' => $categories, 'genres'=> $genres, 
