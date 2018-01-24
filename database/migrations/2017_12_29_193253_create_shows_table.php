@@ -15,6 +15,7 @@ class CreateShowsTable extends Migration
         Schema::create('shows', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
+            $table->float('price');
             $table->integer('event_id')->unsigned();
             $table->integer('ubication_id')->unsigned();
             $table->timestamps();

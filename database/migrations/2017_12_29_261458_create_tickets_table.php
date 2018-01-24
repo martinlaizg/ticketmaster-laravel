@@ -14,7 +14,6 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('price');
             $table->integer('show_id')->unsigned();
             $table->integer('col');
             $table->integer('row');

@@ -34,6 +34,7 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
 $factory->define(App\Show::class, function (Faker\Generator $faker) {
     return [
 		'date' => $faker->dateTimeBetween('- 100 days', '+ 100 days', null),
+		'price' => (float)random_int(1, 100),
 		'event_id' => random_int(1, 100),
 		'ubication_id' => random_int(1, 10)
     ];

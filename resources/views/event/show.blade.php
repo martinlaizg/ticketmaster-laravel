@@ -13,9 +13,10 @@
 			<label>Localidad:</label> {{ $show->ubication->location }}
 			<br>
 			<label>Entradas:</label> {{ count($show->tickets) }}/{{ $show->ubication->seats }}
+			<br>
+			<label>Precio:</label> {{ $show->price }}€/entrada
 		</div>
 	</div>
-	<br>
 	<br>
 	@if( session()->get('error') )
 		<div class="alert alert-danger">
@@ -26,8 +27,9 @@
 		<form action="{{ action('ShowController@buySeatableTickets', $show->id) }}" method="post">
 			{{ csrf_field() }}
 			<div>
-				<button type="submit">Comprar</button>
+				<button class="btn btn-primary" type="submit">Comprar</button>
 			</div>
+			<br>
 			<div>
 				<table>
 					<th>
