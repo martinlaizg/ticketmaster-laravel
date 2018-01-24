@@ -49,6 +49,6 @@ class ShowController extends Controller
 	public function getShow(Request $request, $id) {
 		$show = Show::find($id);
 
-		return view('event.show');
+		return view('event.show', ['show' => $show]);
 	}
 }
