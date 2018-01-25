@@ -22,8 +22,14 @@ class Ubication extends Model
         'ubication'
     ];
 
-    public function createUbication($ubication) {
+    public function createUbication($name, $ubication, $seatable, $rows, $cols) {
+
+        $this->name = $name;
         $this->location = $ubication;
+        $this->seatable = $seatable;
+        $this->rows = $rows;
+        $this->cols = $cols;
+        $this->seats = $rows * $cols;
 
         $this->save();
     }
@@ -33,11 +39,18 @@ class Ubication extends Model
         $e->delete();
     }
 
-    public static function editUbication($ubication, $id) {
+    public static function editUbication($name, $ubication, $seatable, $rows, $cols, $id) {
         $e = Ubication::find($id);
+
+        $e->name = $name;
 
         if($ubication != null) 
             $e->location = $ubication;
+
+        $e->seatable = $seatable;
+        $e->rows = $rows;
+        $e->cols = $cols;
+        $e->seats = $rows * $cols;
 
         $e->save();
     }
