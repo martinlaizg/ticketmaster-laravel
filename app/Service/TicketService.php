@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use DB;
-
+use Carbon\Carbon;
 
 class TicketService{
 
@@ -18,6 +18,7 @@ class TicketService{
 			->select('tickets.id as ticket_id', 'events.name as show_name',
 			'shows.date as show_date', 'shows.id as show_id', 'ubications.seatable as seatable',
 			'ubications.name as ubication', 'ubications.location as location', 'col', 'row')
+			->where('shows.date','>', Carbon::now()->toDateString())
 			->get();
 		//dd($tickets);
 		return $tickets;
