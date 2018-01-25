@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 
-use App\Service\UserService;
+use App\Service\TicketService;
 use App\User;
 
 class UserController extends Controller
@@ -28,9 +28,10 @@ class UserController extends Controller
 
 	public function getProfile() {
 		$user = Auth::user();
+		$tickets = TicketService::nextTickets($user->id);
 		return view('user.profile', [
 			'user' => $user,
-			'nextTickets' => UserService::nextTickets($user->id)
+			'tickets' => $tickets
 		]);
 	}
 

@@ -34,14 +34,22 @@ $factory->define(App\Event::class, function (Faker\Generator $faker) {
 $factory->define(App\Show::class, function (Faker\Generator $faker) {
     return [
 		'date' => $faker->dateTimeBetween('- 100 days', '+ 100 days', null),
+		'price' => (float)random_int(1, 100),
 		'event_id' => random_int(1, 100),
 		'ubication_id' => random_int(1, 10)
     ];
 });
 
 $factory->define(App\Ubication::class, function (Faker\Generator $faker) {
+	$cols = random_int(20, 30);
+	$rows = random_int(20, 30);
+	$seats = $cols * $rows;
     return [
 		'name' => $faker->text(20),
-		'location' => $faker->text(20)
+		'location' => $faker->text(20),
+		'seatable' => (bool)random_int(0, 1),
+		'seats' => $seats,
+		'cols' => $cols,
+		'rows' => $rows
     ];
 });

@@ -11,13 +11,13 @@
 		<div class="col-sm-8">
 			<!-- Entradas del usuario -->
 			<h3>Tus próximas entradas</h3>
-			@if( count($nextTickets) <= 0 )
+			@if( count($tickets) <= 0 )
 				<div class="alert alert-info">
 					No tienes próximas entradas, puedes comprarlas <a href="{{ action('HomeController@home') }}" class="alert-link">aquí</a>
 				</div>
 			@else
 				<div>
-					@foreach ($ticket as $nextTickets)
+					@foreach ($tickets as $ticket)
 						@include('event.ticket', ['ticket' => $ticket])
 					@endforeach
 				</div>

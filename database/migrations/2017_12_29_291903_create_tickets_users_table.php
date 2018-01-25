@@ -19,7 +19,7 @@ class CreateTicketsUsersTable extends Migration
         });
 
         Schema::table('ticket_user', function($table) {
-            $table->foreign('ticket_id')->references('id')->on('tickets');
+            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

@@ -14,10 +14,11 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('price');
             $table->integer('show_id')->unsigned();
-            $table->integer('seat_id')->unsigned();
-            $table->integer('payment_id')->unsigned();
+            $table->integer('col');
+            $table->integer('row');
+            $table->integer('seat_id')->unsigned()->nullable();
+            $table->integer('payment_id')->unsigned()->nullable();
             $table->timestamps();
         });
 
