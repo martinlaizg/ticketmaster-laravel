@@ -27,7 +27,9 @@
 		<form action="{{ action('ShowController@buySeatableTickets', $show->id) }}" method="post">
 			{{ csrf_field() }}
 			<div>
-				<button class="btn btn-primary" type="submit">Comprar</button>
+				@if(Auth::check())
+					<button class="btn btn-primary" type="submit">Comprar</button>
+				@endif
 			</div>
 			<br>
 			<div>
@@ -41,11 +43,14 @@
 						<tr>						
 							<th width="20">{{ $j }}</th>
 							@for($i=1; $i<=$show->ubication->cols; $i++)
+							<td width="20"><input type="checkbox" name="{{$i}}-{{$j}}" id="{{$i}}-{{$j}}"	
 								@if($show->isOcupied($show->id, $i, $j))
-									<td width="20"><input type="checkbox" name="{{$i}}-{{$j}}" id="{{$i}}-{{$j}}" disabled></td>
-								@else
-									<td width="20"><input type="checkbox" name="{{$i}}-{{$j}}" id="{{$i}}-{{$j}}"></td>					
+									checked disabled
 								@endif
+								@if(Auth::guest())
+									disabled
+								@endif
+								></td>
 							@endfor
 						</tr>
 					@endfor
@@ -53,18 +58,20 @@
 			</div>
 		</form>
 	@else
-		@if( $show->ubication->seats - count($show->tickets) > 0)
-			<form action="{{ action('ShowController@buyTickets', $show->id) }}" method="post">
-				{{ csrf_field() }}
-				<div class="col-sm-2">
-			 		<input class="form-control" type="number" name="numTickets" id="numTickets" value="1" min="1" max="{{$show->ubication->seats - count($show->tickets)}}">
+		@if(Auth::check())
+			@if( $show->ubication->seats - count($show->tickets) > 0)
+				<form action="{{ action('ShowController@buyTickets', $show->id) }}" method="post">
+					{{ csrf_field() }}
+					<div class="col-sm-2">
+						<input class="form-control" type="number" name="numTickets" id="numTickets" value="1" min="1" max="{{$show->ubication->seats - count($show->tickets)}}">
+					</div>
+				<button class="btn btn-primary" type="submit">Comprar</button>
+				</form>
+			@else
+				<div class="alert alert-danger col-sm-3">
+						<strong>Sold Out!</strong>
 				</div>
-			 <button class="btn btn-primary" type="submit">Comprar</button>
-			</form>
-		@else
-			<div class="alert alert-danger col-sm-3">
-					<strong>Sold Out!</strong>
-			</div>
+			@endif
 		@endif
 	@endif
 </div>
