@@ -11,6 +11,7 @@ use App\Event;
 use App\Ubication;
 
 use App\Service\ShowService;
+use App\Service\TicketService;
 
 class ShowController extends Controller
 {
@@ -73,5 +74,13 @@ class ShowController extends Controller
 			ShowService::buySeatTicket($id, Auth::user()->id, $col, $row);
 		}
 		return redirect()->action('ShowController@getShow', $id);
+	}
+
+	public function returnTicket(Request $request, $id){
+		$returned = TicketService::returnTicket($id, $request->col, $request->row);
+		if($returned) {
+			return redirect()->back();
+		}
+		return redirect()->back()->withErrors(['error' => 'Ticket fail']);
 	}
 }

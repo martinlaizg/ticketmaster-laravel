@@ -5,6 +5,8 @@ namespace App\Service;
 use DB;
 use Carbon\Carbon;
 
+use App\Ticket;
+
 class TicketService{
 
 	public static function nextTickets($userId){
@@ -22,5 +24,14 @@ class TicketService{
 			->get();
 		//dd($tickets);
 		return $tickets;
+	}
+
+	public static function returnTicket($show, $col, $row) {
+		$ticket = Ticket::where('show_id', $show)->where('col', $col)->where('row', $row)->first();
+		if( $ticket ) {
+			$ticket->delete();
+			return true;
+		}
+		return false;
 	}
 }
