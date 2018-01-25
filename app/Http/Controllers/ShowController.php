@@ -17,7 +17,7 @@ class ShowController extends Controller
 {
     public function createShowView() {
         $events = Event::all()->lists('name', 'id');
-        $ubications = Ubication::all()->lists('location', 'id');
+        $ubications = Ubication::all()->lists('name', 'id');
 
         return view('create_show', ['events' => $events, 'ubications' => $ubications]);
     }
@@ -39,7 +39,7 @@ class ShowController extends Controller
     public function editShowView($id) {
         $e = Show::findOrFail($id);
         $events = Event::all()->lists('name', 'id');
-        $ubications = Ubication::all()->lists('location', 'id');
+        $ubications = Ubication::all()->lists('name', 'id');
 
         return view('edit_show', ['show' => $e, 'events' => $events, 'ubications' => $ubications]);
     }
