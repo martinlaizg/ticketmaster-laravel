@@ -17,7 +17,6 @@ Route::auth();
 
 Route::get('/unauthorized', 'HomeController@badRequest');
 
-Route::get('/home', 'HomeController@index');
 
 Route::group(['prefix' => 'event'], function() {
 	Route::any('/', 'EventController@getEvents');
@@ -53,9 +52,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function() {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'adminzone']], function () {
-	
+
 	Route::get('/', 'HomeController@adminZone');
-	
+
 	Route::group(['prefix' => 'event'], function() {
 		Route::post('create', 'EventController@createEvent');
 		Route::get('create', 'EventController@createEventView');
