@@ -19,7 +19,7 @@
                 'autofocus' => 'autofocus', 'required' => 'required']) !!}
 
         <h4> <span class="label label-primary">Asientos numerados</span></h4>
-        {!! Form::select('seatable', ['Si', 'No']) !!}
+        {!! Form::select('seatable', ['No', 'Si']) !!}
         
         <h4> <span class="label label-primary">Filas de la ubicación</span></h4>
         {!! Form::number('rows', null, ['class' => 'field', 'placeholder' => 'Filas',
