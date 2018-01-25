@@ -29,4 +29,13 @@ class ShowService{
 
 		$ticket->user()->save(User::find($userId));
 	}
+
+	public static function buyTicket($show, $numTickets, $userId) {
+		for($i=1; $i<=$numTickets; $i++) {
+			$ticket = new Ticket();
+			$ticket->show_id = $show;
+			$ticket->save();
+			$ticket->user()->save(User::find($userId));
+		}
+	}
 }

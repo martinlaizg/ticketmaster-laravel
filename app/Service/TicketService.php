@@ -22,12 +22,12 @@ class TicketService{
 			'ubications.name as ubication', 'ubications.location as location', 'col', 'row')
 			->where('shows.date','>', Carbon::now()->toDateString())
 			->get();
-		//dd($tickets);
+		
 		return $tickets;
 	}
 
-	public static function returnTicket($show, $col, $row) {
-		$ticket = Ticket::where('show_id', $show)->where('col', $col)->where('row', $row)->first();
+	public static function returnTicket($id) {
+		$ticket = Ticket::find($id);
 		if( $ticket ) {
 			$ticket->delete();
 			return true;

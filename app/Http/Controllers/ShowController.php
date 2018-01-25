@@ -76,11 +76,20 @@ class ShowController extends Controller
 		return redirect()->action('ShowController@getShow', $id);
 	}
 
-	public function returnTicket(Request $request, $id){
-		$returned = TicketService::returnTicket($id, $request->col, $request->row);
+	public function returnTicket(Request $request){
+		$returned = TicketService::returnTicket($request->ticketId);
 		if($returned) {
 			return redirect()->back();
 		}
 		return redirect()->back()->withErrors(['error' => 'Ticket fail']);
+	}
+
+	public function buyTickets(Request $request, $show) {
+		$tickets = count(Show::find($show)->tickets);
+		$seats = Show::find($show)->ubication->seats;
+		if($request->numTickets <= ($seats-$tickets)) {
+			$buyed = ShowService::buyTicket($show, $request->numTickets, Auth::user()->id);
+		}
+		return redirect()->back();
 	}
 }

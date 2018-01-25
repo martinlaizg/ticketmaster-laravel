@@ -23,10 +23,9 @@
 			{{ $ticket->show_date }}
 		</div>
 		<div class="col-sm-2">
-			<form action="{{ action('ShowController@returnTicket', $ticket->show_id) }}" method="post">
+			<form action="{{ action('ShowController@returnTicket') }}" method="post">
 				{{ csrf_field() }}
-				<input type="hidden" name="col" id="col" value="{{ $ticket->col }}">
-				<input type="hidden" name="row" id="row" value="{{ $ticket->row }}">
+				<input type="hidden" name="ticketId" id="ticketId" value="{{ $ticket->ticket_id }}">
 				<button class="btn btn-block btn-warning" type="submit">Return</button>
 			</form>
 		</div>

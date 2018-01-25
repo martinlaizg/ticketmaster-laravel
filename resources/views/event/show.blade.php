@@ -53,7 +53,19 @@
 			</div>
 		</form>
 	@else
-		Show sin asientos
+		@if( $show->ubication->seats - count($show->tickets) > 0)
+			<form action="{{ action('ShowController@buyTickets', $show->id) }}" method="post">
+				{{ csrf_field() }}
+				<div class="col-sm-2">
+			 		<input class="form-control" type="number" name="numTickets" id="numTickets" value="1" min="1" max="{{$show->ubication->seats - count($show->tickets)}}">
+				</div>
+			 <button class="btn btn-primary" type="submit">Comprar</button>
+			</form>
+		@else
+			<div class="alert alert-danger col-sm-3">
+					<strong>Sold Out!</strong>
+			</div>
+		@endif
 	@endif
 </div>
 @endsection
