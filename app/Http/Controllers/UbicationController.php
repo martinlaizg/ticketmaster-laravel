@@ -17,7 +17,8 @@ class UbicationController extends Controller
 
     public function createUbication(Request $request) {
         $ubication = new Ubication();
-        $ubication->createUbication($request->ubication);
+        $ubication->createUbication($request->name, $request->ubication, 
+            $request->seatable, $request->rows, $request->cols);
 
         return redirect()->action('HomeController@adminZone');
     }
@@ -38,7 +39,8 @@ class UbicationController extends Controller
     }
 
     public function editUbication(Request $request, $id) {
-        Ubication::editUbication($request->ubication, $id);
+        Ubication::editUbication($request->name, $request->ubication, 
+            $request->seatable, $request->rows, $request->cols, $id);
 
         return redirect()->action('HomeController@adminZone');
     }
