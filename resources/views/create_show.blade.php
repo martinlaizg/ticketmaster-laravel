@@ -21,6 +21,10 @@
         <h4> <span class="label label-primary">Ubicacion</span></h4>  
         {!! Form::select('ubication', $ubications) !!}
 
+        <h4> <span class="label label-primary">Precio por entrada</span></h4>   
+        {!! Form::number('price', null, ['class' => 'field', 'placeholder' => 'Precio',
+            'autofocus' => 'autofocus', 'required' => 'required']) !!}
+
         {!! Form::button('<span class="glyphicon glyphicon-floppy-saved"></span> Crear Show',
              ['class' => 'btn btn-primary btn-block', 'type' => 'submit']) !!}
              </div>

@@ -15,7 +15,7 @@
                         
         <div>
         <h4> <span class="label label-primary">Descripción</span></h4></div>
-        {!! Form::text('description', null, ['class' => 'field', 'autofocus' => 'autofocus',
+        {!! Form::textarea('description', null, ['class' => 'field', 'autofocus' => 'autofocus',
                         'placeholder' => 'Descripción', 'required' => 'required']) !!}
 
         <h4> <span class="label label-primary">Género</span></h4></div>    

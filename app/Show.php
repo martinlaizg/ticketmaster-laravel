@@ -29,13 +29,15 @@ class Show extends Model
 		'price'
     ];
 
-    public function createShow($date, $event, $ubication) {
+    public function createShow($date, $event, $ubication, $price) {
     
         $this->date = $date;
 
         $this->event_id = $event;
 
         $this->ubication_id = $ubication;
+
+        $this->price = $price;
 
         $this->save();
     }
@@ -45,7 +47,7 @@ class Show extends Model
         $e->delete();
     }
 
-    public static function editShow($date, $event, $ubication, $id) {
+    public static function editShow($date, $event, $ubication, $price, $id) {
 
         $e = Show::find($id);
 
@@ -55,6 +57,8 @@ class Show extends Model
         $e->event_id = $event;
 
         $e->ubication_id = $ubication;
+
+        $e->price = $price;
 
         $e->save();
 	}
