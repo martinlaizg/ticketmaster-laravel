@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 use App\Show;
@@ -53,7 +54,9 @@ class ShowController extends Controller
 
 	public function getShow(Request $request, $id) {
 		$show = Show::find($id);
-
+		if($how->date <= Carbon::now()) {
+			return redirect()->back();
+		}
 		return view('event.show', ['show' => $show]);
 	}
 
