@@ -16,7 +16,7 @@ class EventsTableSeeder extends Seeder
 		//factory(App\Event::class, 100)->create();
 		
 		DB::table('events')->insert([
-            'name' => 'Shakira \"El Dorado\" world tour',
+            'name' => 'Shakira "El Dorado" world tour',
 			'description' => 'Llega la nueva gira de Shakira con nuevos conciertos en Bilbao, Madrid, A Coruña y Barcelona con su gira mundial El Dorado. El tour empezará en Alemania y hará paradas en Europa y Estados Unidos. ¡No te quedes sin entradas para Shakira!',
 			'genre_id' => 1,
 			'created_at' => Carbon::now(),
