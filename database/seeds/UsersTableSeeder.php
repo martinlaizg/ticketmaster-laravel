@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
-        factory(App\User::class, 50)->create();
+        //factory(App\User::class, 50)->create();
 
         DB::table('users')->insert([
 			'name' => 'Martin',
