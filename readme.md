@@ -5,12 +5,12 @@
 - Privado:
 	- ~Login~
 	- Tickets:
-		- Comprar
-		- Devolver
-		- Ver
+		- ~Comprar~
+		- ~Devolver~
+		- ~Ver~
 	- Calendario de eventos:
-		- Anteriores
-		- Próximos
+		- ~Anteriores~
+		- ~Próximos~
 - Admin:
 	- CRUDS:
 		- ~User~
@@ -18,4 +18,5 @@
 		- ~Show~
 		- ~Category~
 		- ~Genre~
+		- ~Ubication~
 		
