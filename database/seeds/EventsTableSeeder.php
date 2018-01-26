@@ -38,14 +38,14 @@ class EventsTableSeeder extends Seeder
 		]);
 		DB::table('events')->insert([
             'name' => 'El Mago Pop: Nada Es Imposible',
-			'description' => '',
+			'description' => 'NADA ES IMPOSIBLE es el nuevo espectáculo de Antonio Díaz, EL MAGO POP, con el que triunfa en el Teatro Rialto de Madrid, ofreciendo un viaje por lo extraordinario lleno de asombro, diversión, sensibilidad, sorpresas, ritmo y emoción, en una aventura llena de ilusiones que confirma que, cuando EL MAGO POP está en escena, nada es imposible!',
             'genre_id' => 14,
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now()
 		]);
 		DB::table('events')->insert([
             'name' => 'Circo Raluy Legacy',
-			'description' => '',
+			'description' => 'El Circo Raluy Legacy, encabezado por el mayor de la saga, Luis Raluy junto al resto de su familia, han conservado el legado que ha ido pasando de padres a hijos y que a día de hoy, está considerado uno de los museos ambulante más importantes de Europa con sus más de 40 caravanas y camiones de principios de siglo pasado consiguiendo así, transportar directamente a la época dorada del mundo del circo a todos aquellos que se atreven a vivir esta experiencia, la de adentrarse en el Circo Raluy.',
             'genre_id' => 12,
 			'created_at' => Carbon::now(),
 			'updated_at' => Carbon::now()

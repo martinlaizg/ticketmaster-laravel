@@ -54,7 +54,7 @@ class ShowController extends Controller
 
 	public function getShow(Request $request, $id) {
 		$show = Show::find($id);
-		if($how->date <= Carbon::now()) {
+		if($show->date <= Carbon::now()) {
 			return redirect()->back();
 		}
 		return view('event.show', ['show' => $show]);
