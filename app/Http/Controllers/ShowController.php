@@ -24,7 +24,7 @@ class ShowController extends Controller
 
     public function createShow(Request $request) {
         $show = new Show();
-        $show->createShow($request->date, $request->event, $request->ubication);
+        $show->createShow($request->date, $request->event, $request->ubication, $request->price);
 
         return redirect()->action('HomeController@adminZone');
     }
@@ -46,7 +46,7 @@ class ShowController extends Controller
     }
 
     public function editShow(Request $request, $id) {
-        Show::editShow($request->date, $request->event[0], $request->ubication[0], $id);
+        Show::editShow($request->date, $request->event, $request->ubication, $request->price, $id);
 
         return redirect()->action('HomeController@adminZone');
 	}
