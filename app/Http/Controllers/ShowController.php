@@ -31,6 +31,7 @@ class ShowController extends Controller
 
     public function deleteShow($id) {
 
+		ShowService::deleteChilds($id);
         Show::borrarShow($id);
 
         return redirect()->action('HomeController@adminZone');

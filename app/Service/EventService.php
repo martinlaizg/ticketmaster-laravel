@@ -7,6 +7,7 @@ use DB;
 
 use App\Event;
 use App\Show;
+use App\Service\ShowService;
 
 class EventService{
 
@@ -55,6 +56,7 @@ class EventService{
         $shows = DB::table('shows')->where('event_id', $eventId)->get();
         
         foreach ($shows as &$show) {
+			ShowService::deleteChilds($show->id);
             Show::borrarShow($show->id);
         }
 	}

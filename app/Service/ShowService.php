@@ -38,4 +38,12 @@ class ShowService{
 			$ticket->user()->save(User::find($userId));
 		}
 	}
+
+	public static function deleteChilds($id) {
+		$tickets = DB::table('tickets')->where('show_id', $id)->get();
+
+		foreach($tickets as $ticket) {
+			Ticket::borrarTicket($ticket->id);
+		}
+	}
 }

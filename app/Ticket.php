@@ -28,5 +28,10 @@ class Ticket extends Model
         return $this->belongsTo('App\PaymentMethod');
     }
 
+    public static function borrarTicket($id) {
+        $e = Ticket::find($id);
+        $e->delete();
+    }
+
 
 }
